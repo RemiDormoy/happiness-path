@@ -5,5 +5,8 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="alizouzBlue">#5060EE</color>
+    <color name="alizouzPurple">#BAA3FF</color>
+    <color name="alizouzBlueLight">#5FAAFF</color>
+    <color name="alizouzGreen">#66DFA3</color>
 
 </resources>
