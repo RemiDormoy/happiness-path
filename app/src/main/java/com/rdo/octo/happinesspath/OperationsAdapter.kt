@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.cell_wallet.view.*
 
 class OperationsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val list = listOf(
+    val list1 = listOf(
         Operation("+200,00€", "Birthday Tom"),
         Operation("-40,00€", "NYC"),
         Operation("-56,75€", "New Car"),
@@ -25,6 +25,8 @@ class OperationsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         Operation("+3500,90€", "Salary"),
         Operation("-30,87€", "Cinema savings")
     )
+
+    var list = list1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val res = when (viewType) {
@@ -72,6 +74,15 @@ class OperationsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         } else {
             2
         }
+    }
+
+    fun filter(i: Int) {
+        this.list = when (i) {
+            0 -> list1
+            1 -> list1.filter { it.amount.startsWith("-") }
+            else -> list1.filter { it.amount.startsWith("+") }
+        }
+        notifyDataSetChanged()
     }
 
 }

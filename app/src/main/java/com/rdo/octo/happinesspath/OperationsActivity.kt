@@ -19,6 +19,9 @@ import kotlinx.android.synthetic.main.operation_scroll_content.*
 
 class OperationsActivity : AppCompatActivity() {
 
+    val operationsAdapter : OperationsAdapter by lazy {  OperationsAdapter() }
+
+
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
         strokeWidth = 4f
@@ -41,8 +44,20 @@ class OperationsActivity : AppCompatActivity() {
 
         addAnimation()
 
+        initButtons()
+
+    }
+
+    private fun initButtons() {
         val white = ContextCompat.getColor(this, android.R.color.white)
         val black = ContextCompat.getColor(this, R.color.alizouzBlack)
+
+        button.isSelected = true
+        button2.isSelected = false
+        button3.isSelected = false
+        button.setTextColor(white)
+        button3.setTextColor(black)
+        button2.setTextColor(black)
 
         button.setOnClickListener {
             button.isSelected = true
@@ -51,6 +66,7 @@ class OperationsActivity : AppCompatActivity() {
             button.setTextColor(white)
             button3.setTextColor(black)
             button2.setTextColor(black)
+            operationsAdapter.filter(0)
         }
 
         button2.setOnClickListener {
@@ -60,6 +76,7 @@ class OperationsActivity : AppCompatActivity() {
             button2.setTextColor(white)
             button.setTextColor(black)
             button3.setTextColor(black)
+            operationsAdapter.filter(1)
         }
 
         button3.setOnClickListener {
@@ -69,8 +86,8 @@ class OperationsActivity : AppCompatActivity() {
             button3.setTextColor(white)
             button.setTextColor(black)
             button2.setTextColor(black)
+            operationsAdapter.filter(2)
         }
-
     }
 
     private fun addAnimation() {
@@ -98,7 +115,7 @@ class OperationsActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = VERTICAL
         operationsRecyclerView.layoutManager = layoutManager
-        operationsRecyclerView.adapter = OperationsAdapter()
+        operationsRecyclerView.adapter = operationsAdapter
     }
 
     private fun initLine() {
