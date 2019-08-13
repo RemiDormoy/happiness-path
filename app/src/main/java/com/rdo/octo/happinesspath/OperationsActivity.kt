@@ -41,6 +41,36 @@ class OperationsActivity : AppCompatActivity() {
 
         addAnimation()
 
+        val white = ContextCompat.getColor(this, android.R.color.white)
+        val black = ContextCompat.getColor(this, R.color.alizouzBlack)
+
+        button.setOnClickListener {
+            button.isSelected = true
+            button2.isSelected = false
+            button3.isSelected = false
+            button.setTextColor(white)
+            button3.setTextColor(black)
+            button2.setTextColor(black)
+        }
+
+        button2.setOnClickListener {
+            button2.isSelected = true
+            button.isSelected = false
+            button3.isSelected = false
+            button2.setTextColor(white)
+            button.setTextColor(black)
+            button3.setTextColor(black)
+        }
+
+        button3.setOnClickListener {
+            button3.isSelected = true
+            button2.isSelected = false
+            button.isSelected = false
+            button3.setTextColor(white)
+            button.setTextColor(black)
+            button2.setTextColor(black)
+        }
+
     }
 
     private fun addAnimation() {

@@ -16,12 +16,24 @@ class OperationsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         Operation("+123,90€", "Travel to London"),
         Operation("-89,00€", "Playstation"),
         Operation("+3500,90€", "Salary"),
+        Operation("-30,87€", "Cinema savings"),
+        Operation("+200,00€", "Birthday Tom"),
+        Operation("-40,00€", "NYC"),
+        Operation("-56,75€", "New Car"),
+        Operation("+123,90€", "Travel to London"),
+        Operation("-89,00€", "Playstation"),
+        Operation("+3500,90€", "Salary"),
         Operation("-30,87€", "Cinema savings")
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val res = when (viewType) {
+            0 -> R.layout.cell_end_of_operations
+            1 -> R.layout.cell_complete_profile
+            else -> R.layout.cell_operation
+        }
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.cell_operation,
+            res,
             parent,
             false
         )
@@ -31,23 +43,35 @@ class OperationsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list.size + 1
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val colorRes = when (list[position].amount.first()) {
-            '-' -> android.R.color.darker_gray
-            else -> R.color.alizouzGreen
+        if (position < list.size && position != 4 &&position != 7 && position != 12) {
+            val colorRes = when (list[position].amount.first()) {
+                '-' -> android.R.color.darker_gray
+                else -> R.color.alizouzGreen
+            }
+            val imageRes = when (list[position].amount.first()) {
+                '-' -> R.drawable.ic_arrow_downward_black_24dp
+                else -> R.drawable.ic_arrow_upward_black_24dp
+            }
+            val color = ContextCompat.getColor(holder.itemView.context, colorRes)
+            holder.itemView.operationNameTextView.text = list[position].name
+            holder.itemView.operationAmountTextView.text = list[position].amount
+            holder.itemView.operationAmountTextView.setTextColor(color)
+            holder.itemView.imageView7.setImageResource(imageRes)
         }
-        val imageRes = when (list[position].amount.first()) {
-            '-' -> R.drawable.ic_arrow_downward_black_24dp
-            else -> R.drawable.ic_arrow_upward_black_24dp
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position == list.size) {
+            0
+        } else if (position == 4 ||position == 7 || position == 12){
+            1
+        } else {
+            2
         }
-        val color = ContextCompat.getColor(holder.itemView.context, colorRes)
-        holder.itemView.operationNameTextView.text = list[position].name
-        holder.itemView.operationAmountTextView.text = list[position].amount
-        holder.itemView.operationAmountTextView.setTextColor(color)
-        holder.itemView.imageView7.setImageResource(imageRes)
     }
 
 }
