@@ -4,12 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:id="@+id/operationHeaderContainer"
+    android:layout_height="wrap_content"
     android:background="@color/alizouzBlue"
-    android:paddingTop="24dp"
-    app:layoutDescription="@xml/operation_scene"
-    tools:showIn="@layout/activity_operations">
+    android:paddingTop="24dp">
 
 
     <ImageView
@@ -73,10 +71,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lineContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
         app:layout_constraintTop_toBottomOf="@id/textView3"
-        android:layout_marginTop="16dp"
-        tools:showIn="@layout/operation_header">
+        android:layout_marginTop="16dp">
 
         <ImageView
             android:id="@+id/imageView3"

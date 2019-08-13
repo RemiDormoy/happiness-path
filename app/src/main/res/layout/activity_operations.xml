@@ -31,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/yolo">
 
         <include layout="@layout/operation_scroll_content" />
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

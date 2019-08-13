@@ -12,7 +12,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-import kotlinx.android.synthetic.main.line_container.*
+import kotlinx.android.synthetic.main.activity_operations.*
+import kotlinx.android.synthetic.main.line_container.lineContainer
+import kotlinx.android.synthetic.main.operation_header_collapsed.*
 import kotlinx.android.synthetic.main.operation_scroll_content.*
 
 class OperationsActivity : AppCompatActivity() {
@@ -35,6 +37,29 @@ class OperationsActivity : AppCompatActivity() {
 
         initLine()
 
+        initContent()
+
+        addAnimation()
+
+    }
+
+    private fun addAnimation() {
+        Handler().postDelayed({
+            operationsScrollView.viewTreeObserver.addOnScrollChangedListener {
+                yolo()
+            }
+        }, 200)
+
+    }
+
+    private fun yolo() {
+        val scroll = operationsScrollView.scrollY.toFloat()
+        val progress = maxOf(0f, minOf(1f, scroll / 500f))
+        operationHeaderContainer.progress = progress
+        lineContainer.alpha = 1 - progress
+    }
+
+    private fun initContent() {
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = HORIZONTAL
         walletsRecyclerView.layoutManager = linearLayoutManager
@@ -44,7 +69,6 @@ class OperationsActivity : AppCompatActivity() {
         layoutManager.orientation = VERTICAL
         operationsRecyclerView.layoutManager = layoutManager
         operationsRecyclerView.adapter = OperationsAdapter()
-
     }
 
     private fun initLine() {
