@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,14 +8,150 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/simpleAuthTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:padding="30dp"
+        android:background="?attr/selectableItemBackground"
+        android:padding="24dp"
+        android:text="Simple Authentication / RGPD"
+        app:layout_constraintEnd_toStartOf="@+id/keepTheWaitingTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:gravity="center"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/keepTheWaitingTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="Keep them waiting"
+        app:layout_constraintBottom_toBottomOf="@+id/simpleAuthTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/simpleAuthTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/simpleAccesTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="24dp"
+        android:gravity="center"
+        android:text="Accès simple aux features / Personalisation"
+        app:layout_constraintEnd_toStartOf="@+id/keepTheWaitingTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keepTheWaitingTextView" />
+
+    <TextView
+        android:id="@+id/interactionAtBottomTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="Interactions at the bottom of the screen / Grands écrans"
+        app:layout_constraintBottom_toBottomOf="@+id/simpleAccesTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/simpleAuthTextView"
+        app:layout_constraintTop_toBottomOf="@+id/keepTheWaitingTextView"/>
+
+    <TextView
+        android:id="@+id/augmentedListTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="24dp"
+        android:gravity="center"
+        android:text="Listes augmentées"
+        app:layout_constraintEnd_toStartOf="@+id/keepTheWaitingTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/interactionAtBottomTextView" />
+
+    <TextView
+        android:id="@+id/infiniteNavigationTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="Navigation infinie"
+        app:layout_constraintBottom_toBottomOf="@+id/augmentedListTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/simpleAuthTextView"
+        app:layout_constraintTop_toTopOf="@+id/augmentedListTextView"/>
+
+    <TextView
+        android:id="@+id/gesturesTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="24dp"
+        android:gravity="center"
+        android:text="Gestures"
+        app:layout_constraintEnd_toStartOf="@+id/keepTheWaitingTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/augmentedListTextView" />
+
+    <TextView
+        android:id="@+id/lifeTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="Ajouter du vivant"
+        app:layout_constraintBottom_toBottomOf="@+id/gesturesTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/simpleAuthTextView"
+        app:layout_constraintTop_toTopOf="@+id/gesturesTextView"/>
+
+    <TextView
+        android:id="@+id/impatienceTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="24dp"
+        android:gravity="center"
+        android:text="Impatience / Gratification"
+        app:layout_constraintEnd_toStartOf="@+id/keepTheWaitingTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gesturesTextView" />
+
+    <TextView
+        android:id="@+id/humaneDesignTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="Humane Design + Sur mesure / Appli apprenante"
+        app:layout_constraintBottom_toBottomOf="@+id/impatienceTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/simpleAuthTextView"
+        app:layout_constraintTop_toTopOf="@+id/impatienceTextView"/>
+
+    <TextView
+        android:id="@+id/integrationTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Integration dans l'OS"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:padding="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/impatienceTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

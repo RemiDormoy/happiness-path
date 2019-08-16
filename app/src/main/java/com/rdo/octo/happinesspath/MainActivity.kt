@@ -10,8 +10,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textView.setOnClickListener {
+        augmentedListTextView.setOnClickListener {
             startActivity(Intent(this, OperationsActivity::class.java))
+        }
+        simpleAuthTextView.setOnClickListener {
+            startActivity(Intent(this, SimpleAuthActivity::class.java))
         }
     }
 }
