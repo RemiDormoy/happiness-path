@@ -6,7 +6,6 @@
     android:id="@+id/transferAmountContainer"
     app:layoutDescription="@xml/scene_transfer_amount"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/holo_green_dark"
     tools:showIn="@layout/activity_transfer">
 
     <EditText

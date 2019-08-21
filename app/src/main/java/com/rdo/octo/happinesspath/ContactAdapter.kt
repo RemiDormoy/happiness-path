@@ -6,7 +6,8 @@ import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cell_contact.view.*
 
-class ContactAdapter(private val clickHandler: (Contact, Float) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ContactAdapter(private val clickHandler: (Contact, Float) -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val list = listOf(
         Contact(R.drawable.rafaelle, "Raf"),
@@ -41,6 +42,16 @@ class ContactAdapter(private val clickHandler: (Contact, Float) -> Unit) : Recyc
         holder.itemView.contactNameTextView.text = contact.name
         holder.itemView.contactImageView.setImageResource(contact.picture)
         holder.itemView.contactContainer.setOnClickListener {
+            val newRes = if (contact.isChecked) {
+                R.drawable.ic_plus
+            } else {
+                R.drawable.ic_moins
+            }
+            holder.itemView.plusLessButton.animate().scaleY(0f).setDuration(250).scaleX(0f).withEndAction {
+                holder.itemView.plusLessButton.setImageResource(newRes)
+                holder.itemView.plusLessButton.animate().setDuration(250).scaleY(01f).scaleX(1f).start()
+            }.start()
+            contact.isChecked = contact.isChecked.not()
             clickHandler(contact, holder.itemView.y)
         }
     }
@@ -49,5 +60,6 @@ class ContactAdapter(private val clickHandler: (Contact, Float) -> Unit) : Recyc
 
 data class Contact(
     @DrawableRes val picture: Int,
-    val name: String
+    val name: String,
+    var isChecked: Boolean = false
 )

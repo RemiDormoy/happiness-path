@@ -1,5 +1,6 @@
 package com.rdo.octo.happinesspath
 
+import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.View.INVISIBLE
@@ -8,7 +9,9 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import kotlinx.android.synthetic.main.activity_transfer.*
 import kotlinx.android.synthetic.main.transfer_amount.*
 import kotlinx.android.synthetic.main.transfer_confirm.*
@@ -21,6 +24,7 @@ import java.util.concurrent.Executors
 class TransferActivity: AppCompatActivity() {
 
     private val contactAdapter: ContactAdapter by lazy { ContactAdapter(::click) }
+    private val addedContactAdapter: AddedContactAdapter by lazy { AddedContactAdapter(::showButtonContact, ::hideButtonContact) }
     private var step = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +35,8 @@ class TransferActivity: AppCompatActivity() {
         }
         cardView3.post {
             cardView3.translationY = cardView3.height.toFloat()
+            addedContacts.scaleY = 0f
+            addedContacts.scaleX = 0f
         }
 
         selectedContactContainer1.visibility = INVISIBLE
@@ -51,27 +57,49 @@ class TransferActivity: AppCompatActivity() {
         }
         contactRecyclerView.layoutManager = LinearLayoutManager(this)
         contactRecyclerView.adapter = contactAdapter
+        val linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager.orientation = HORIZONTAL
+        addedContactsRecyclerView.layoutManager = linearLayoutManager
+        addedContactsRecyclerView.adapter = addedContactAdapter
+
+        goToAmountButton.setOnClickListener {
+            step = 1
+            val animator = ValueAnimator.ofFloat(cardView2.height.toFloat(), 0f)
+            animator.duration = 500
+            animator.interpolator = DecelerateInterpolator()
+            animator.addUpdateListener {
+                cardView2.translationY = it.animatedValue as Float
+                val progress = 1f - (it.animatedValue as Float) / cardView2.height.toFloat()
+                contactCardContainer.progress = progress
+            }
+            val black = ContextCompat.getColor(this , R.color.alizouzBlack)
+            val white = ContextCompat.getColor(this , android.R.color.white)
+            val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), black, white)
+            colorAnimation.duration = 300
+            colorAnimation.addUpdateListener {
+                goToAmountButton.setBackgroundColor(it.animatedValue as Int)
+            }
+            animator.start()
+            colorAnimation.start()
+        }
     }
 
     private fun click(contact: Contact, y: Float) {
-        step = 1
-        selectedContactImageView.setImageResource(contact.picture)
-        selectedContactNameTextView.text = contact.name
-        val startTranslation = y + contactRecyclerView.y
-        selectedContactContainer1.translationY = startTranslation
-        selectedContactContainer1.visibility = VISIBLE
-        val animator = ValueAnimator.ofFloat(cardView2.height.toFloat(), 0f)
-        animator.duration = 500
-        animator.interpolator = DecelerateInterpolator()
-        animator.addUpdateListener {
-            cardView2.translationY = it.animatedValue as Float
-            val progress = 1f - (it.animatedValue as Float) / cardView3.height.toFloat()
-            selectedContactContainer1.translationY = startTranslation * (1 - progress)
-            contactRecyclerView.alpha = 1 - progress
+        if (contact.isChecked) {
+            addedContactAdapter.add(contact)
+        } else {
+            addedContactAdapter.remove(contact)
         }
-        animator.start()
     }
 
+
+    private fun showButtonContact() {
+        addedContacts.animate().scaleX(1f).scaleY(1f).start()
+    }
+
+    private fun hideButtonContact() {
+        addedContacts.animate().scaleX(0f).scaleY(0f).start()
+    }
 
     override fun onBackPressed() {
         when (step) {
@@ -90,7 +118,10 @@ class TransferActivity: AppCompatActivity() {
             val progress = (it.animatedValue as Float) / cardView2.height.toFloat()
             cardView2.translationY = it.animatedValue as Float
             contactRecyclerView.alpha = progress
+            textView.alpha = progress
         }
+        contactCardContainer.progress = 0f
+        goToAmountButton.setBackgroundResource(R.drawable.border_button_background_selected)
         animator.start()
     }
 
