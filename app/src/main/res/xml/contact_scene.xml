@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@layout/transfer_contact"
+        motion:constraintSetEnd="@layout/transfer_contact_collapsed"
+        motion:duration="500">
+    </Transition>
+
+</MotionScene>

@@ -16,5 +16,8 @@ class MainActivity : AppCompatActivity() {
         simpleAuthTextView.setOnClickListener {
             startActivity(Intent(this, SimpleAuthActivity::class.java))
         }
+        infiniteNavigationTextView.setOnClickListener {
+            startActivity(Intent(this, TransferActivity::class.java))
+        }
     }
 }
