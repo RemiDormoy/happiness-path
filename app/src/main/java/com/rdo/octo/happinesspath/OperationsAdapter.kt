@@ -1,5 +1,6 @@
 package com.rdo.octo.happinesspath
 
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -55,14 +56,19 @@ class OperationsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 else -> R.color.alizouzGreen
             }
             val imageRes = when (list[position].amount.first()) {
-                '-' -> R.drawable.ic_arrow_downward_black_24dp
-                else -> R.drawable.ic_arrow_upward_black_24dp
+                '-' -> R.drawable.ic_up_arrow
+                else -> R.drawable.ic_arrow_down
+            }
+            val backgroundColor = when (list[position].amount.first()) {
+                '-' -> R.color.alizouzBlackWithAlpha01
+                else -> R.color.alizouzGreenWithAlpha01
             }
             val color = ContextCompat.getColor(holder.itemView.context, colorRes)
             holder.itemView.operationNameTextView.text = list[position].name
             holder.itemView.operationAmountTextView.text = list[position].amount
             holder.itemView.operationAmountTextView.setTextColor(color)
             holder.itemView.imageView7.setImageResource(imageRes)
+            holder.itemView.imageView7.setBackgroundColor(holder.itemView.resources.getColor(backgroundColor, null))
         }
     }
 
