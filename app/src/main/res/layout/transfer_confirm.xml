@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,14 +8,73 @@
     tools:showIn="@layout/activity_transfer">
 
 
-    <Button
-        android:id="@+id/transferConfirmButton"
+    <EditText
+        android:id="@+id/reasonEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:gravity="center"
+        android:textColorHint="@android:color/darker_gray"
+        android:singleLine="true"
+        android:imeOptions="actionGo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
+
+
+    <TextView
+        android:id="@+id/reasonCountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="S'authentifier et valider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reasonEditText"
+        app:layout_constraintEnd_toEndOf="@+id/reasonEditText"
+        android:text="0/120"/>
+
+    <LinearLayout
+        android:background="@drawable/button_green"
+        android:id="@+id/transferConfirmButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/reasonEditText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S'authentifier et valider"
+            android:textColor="@android:color/white"
+            android:gravity="center"/>
+
+        <ImageView
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fingerprint_black_24dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/yolopoanrngiore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:text="Motif"
+        android:fontFamily="@font/dmsansbold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
