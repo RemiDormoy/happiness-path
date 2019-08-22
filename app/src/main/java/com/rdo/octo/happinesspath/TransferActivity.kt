@@ -3,8 +3,7 @@ package com.rdo.octo.happinesspath
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.os.Bundle
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
+import android.os.Handler
 import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,11 +19,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.concurrent.Executors
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View.*
 
-class TransferActivity: AppCompatActivity() {
+
+class TransferActivity : AppCompatActivity() {
 
     private val contactAdapter: ContactAdapter by lazy { ContactAdapter(::click) }
-    private val addedContactAdapter: AddedContactAdapter by lazy { AddedContactAdapter(::showButtonContact, ::hideButtonContact) }
+    private val addedContactAdapter: AddedContactAdapter by lazy {
+        AddedContactAdapter(
+            ::showButtonContact,
+            ::hideButtonContact
+        )
+    }
     private var step = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,15 +80,39 @@ class TransferActivity: AppCompatActivity() {
                 val progress = 1f - (it.animatedValue as Float) / cardView2.height.toFloat()
                 contactCardContainer.progress = progress
             }
-            val black = ContextCompat.getColor(this , R.color.alizouzBlack)
-            val white = ContextCompat.getColor(this , android.R.color.white)
+            val black = ContextCompat.getColor(this, R.color.alizouzBlack)
+            val white = ContextCompat.getColor(this, android.R.color.white)
             val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), black, white)
             colorAnimation.duration = 300
+            Handler().postDelayed({
+                yoloText.visibility = GONE
+                yoloImage.visibility = GONE
+            }, 300)
             colorAnimation.addUpdateListener {
                 goToAmountButton.setBackgroundColor(it.animatedValue as Int)
             }
             animator.start()
             colorAnimation.start()
+            amountEditText.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable) {
+                    val textWithout = amountEditText.getText().toString().replace(" €", "")
+                    val newText = textWithout + " €"
+                    if (newText != amountEditText.getText().toString()) {
+                        amountEditText.setText(newText)
+                        amountEditText.setSelection(newText.length - 2)
+                    }
+                }
+
+                override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            })
         }
     }
 
@@ -111,6 +143,8 @@ class TransferActivity: AppCompatActivity() {
     private fun returnToCard1() {
         step = 0
         selectedContactContainer1.visibility = INVISIBLE
+        yoloText.visibility = VISIBLE
+        yoloImage.visibility = VISIBLE
         val animator = ValueAnimator.ofFloat(0f, cardView2.height.toFloat())
         animator.duration = 500
         animator.interpolator = DecelerateInterpolator()

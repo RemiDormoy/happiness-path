@@ -33,6 +33,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'com.github.BlacKCaT27:CurrencyEditText:2.0.2'
 
     // Lottie
     implementation 'com.airbnb.android:lottie:3.0.7'
