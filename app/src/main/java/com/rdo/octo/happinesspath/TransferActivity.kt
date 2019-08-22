@@ -2,6 +2,7 @@ package com.rdo.octo.happinesspath
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.DecelerateInterpolator
@@ -49,6 +50,7 @@ class TransferActivity : AppCompatActivity() {
 
         selectedContactContainer1.visibility = INVISIBLE
         transferAmountContinueButton.setOnClickListener {
+            step = 2
             val animator = ValueAnimator.ofFloat(cardView3.height.toFloat(), 0f)
             animator.duration = 500
             animator.interpolator = DecelerateInterpolator()
@@ -91,6 +93,7 @@ class TransferActivity : AppCompatActivity() {
             colorAnimation.addUpdateListener {
                 goToAmountButton.setBackgroundColor(it.animatedValue as Int)
             }
+            reasonEditText.hint = "Virement à ${addedContactAdapter.list.map { it.name }.joinToString(", ")}"
             animator.start()
             colorAnimation.start()
             amountEditText.addTextChangedListener(object : TextWatcher {
@@ -133,6 +136,7 @@ class TransferActivity : AppCompatActivity() {
     }
 
     private fun click(contact: Contact, y: Float) {
+        if (step > 0) return
         if (contact.isChecked) {
             addedContactAdapter.add(contact)
         } else {
@@ -152,8 +156,22 @@ class TransferActivity : AppCompatActivity() {
     override fun onBackPressed() {
         when (step) {
             1 -> returnToCard1()
+            2 -> returnToCard2()
             else -> super.onBackPressed()
         }
+    }
+
+    private fun returnToCard2() {
+        step = 1
+        val animator = ValueAnimator.ofFloat(0f, cardView3.height.toFloat())
+        animator.duration = 500
+        animator.interpolator = DecelerateInterpolator()
+        animator.addUpdateListener {
+            cardView3.translationY = it.animatedValue as Float
+        }
+        transferAmountContainer.progress = 0f
+        amountEditText.isEnabled = true
+        animator.start()
     }
 
     private fun returnToCard1() {
@@ -194,6 +212,7 @@ class TransferActivity : AppCompatActivity() {
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
+                    startActivity(Intent(this@TransferActivity, TransferConfirmationActivity::class.java))
                     finish()
                 }
 

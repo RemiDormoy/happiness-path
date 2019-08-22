@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rdo.octo.happinesspath">
 
-    <uses-feature android:name="android.hardware.fingerprint" android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.fingerprint"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
@@ -22,9 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OperationsActivity"/>
-        <activity android:name=".SimpleAuthActivity"/>
-        <activity android:name=".TransferActivity"/>
+        <activity android:name=".OperationsActivity" />
+        <activity android:name=".SimpleAuthActivity" />
+        <activity android:name=".TransferActivity" />
+        <activity android:name=".TransferConfirmationActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

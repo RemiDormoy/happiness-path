@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.cell_contact_added.view.*
 class AddedContactAdapter(private val makeAppearance: () -> Unit, private val makeDisappear: () -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val list: MutableList<Contact> = mutableListOf()
+    val list: MutableList<Contact> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
