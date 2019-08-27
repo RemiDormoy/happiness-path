@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.line_container.lineContainer
 import kotlinx.android.synthetic.main.operation_header_collapsed.*
 import kotlinx.android.synthetic.main.operation_scroll_content.*
 
-class OperationsActivity : AppCompatActivity() {
+class OperationsActivity : BottomSheetActivity() {
 
     val operationsAdapter : OperationsAdapter by lazy {  OperationsAdapter(::openCompleteProfilePopUp) }
 
@@ -49,7 +49,7 @@ class OperationsActivity : AppCompatActivity() {
     }
 
     private fun openCompleteProfilePopUp() {
-
+        openBottomSheetMwahaha()
     }
 
     private fun initButtons() {

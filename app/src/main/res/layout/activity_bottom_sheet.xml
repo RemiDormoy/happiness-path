@@ -5,7 +5,10 @@
     android:id="@+id/rootView"
     android:layout_height="match_parent">
 
-    <include layout="@layout/activity_transfer_confirmation" />
+    <FrameLayout
+        android:id="@+id/rootViewToInflate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <View
         android:id="@+id/bottom_sheet_black_background"

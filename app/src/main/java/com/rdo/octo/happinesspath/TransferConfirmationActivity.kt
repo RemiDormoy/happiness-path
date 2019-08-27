@@ -15,13 +15,11 @@ import kotlinx.android.synthetic.main.activity_transfer_confirmation.*
 import kotlinx.android.synthetic.main.bottom_sheet_content.*
 import kotlin.math.abs
 
-class TransferConfirmationActivity : AppCompatActivity() {
-
-    private lateinit var behavior: BottomSheetBehavior<ConstraintLayout>
+class TransferConfirmationActivity : BottomSheetActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bottom_sheet)
+        setContentView(R.layout.activity_transfer_confirmation)
         returnCardView.alpha = 0f
         sendTextView.alpha = 0f
         Handler().postDelayed({
@@ -33,38 +31,8 @@ class TransferConfirmationActivity : AppCompatActivity() {
         button9.setOnClickListener {
             finish()
         }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            patternContentTextView.justificationMode = JUSTIFICATION_MODE_INTER_WORD
-        }
-        behavior = BottomSheetBehavior.from(bottom_sheet)
         lottieNotification.setOnClickListener {
-            behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        }
-        behavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onSlide(p0: View, p1: Float) {
-                bottom_sheet_black_background.alpha = p1 * 0.5f
-            }
-
-            override fun onStateChanged(p0: View, state: Int) {
-                if (state == BottomSheetBehavior.STATE_COLLAPSED) {
-                    bottom_sheet_black_background.visibility = GONE
-                } else {
-                    bottom_sheet_black_background.visibility = VISIBLE
-                }
-            }
-
-        })
-        bottom_sheet_black_background.setOnClickListener {
-            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        }
-    }
-
-    override fun onBackPressed() {
-        if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        } else {
-            super.onBackPressed()
+            openBottomSheetMwahaha()
         }
     }
 }
