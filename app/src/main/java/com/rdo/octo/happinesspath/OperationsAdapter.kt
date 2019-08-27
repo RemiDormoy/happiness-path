@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cell_operation.view.*
 import kotlinx.android.synthetic.main.cell_wallet.view.*
 
-class OperationsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class OperationsAdapter(private val completeProfileClick: () -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val list1 = listOf(
         Operation("+200,00€", "Birthday Tom"),
@@ -50,7 +51,7 @@ class OperationsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (position < list.size && position != 4 &&position != 7 && position != 12) {
+        if (position < list.size && position != 4 && position != 7 && position != 12) {
             val colorRes = when (list[position].amount.first()) {
                 '-' -> android.R.color.darker_gray
                 else -> R.color.alizouzGreen
@@ -68,14 +69,26 @@ class OperationsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             holder.itemView.operationAmountTextView.text = list[position].amount
             holder.itemView.operationAmountTextView.setTextColor(color)
             holder.itemView.imageView7.setImageResource(imageRes)
-            holder.itemView.imageView7.setBackgroundColor(holder.itemView.resources.getColor(backgroundColor, null))
+            holder.itemView.imageView7.setBackgroundColor(
+                holder.itemView.resources.getColor(
+                    backgroundColor,
+                    null
+                )
+            )
+            holder.itemView.setOnClickListener {
+
+            }
+        } else if (position < list.size) {
+            holder.itemView.setOnClickListener {
+                completeProfileClick()
+            }
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         return if (position == list.size) {
             0
-        } else if (position == 4 ||position == 7 || position == 12){
+        } else if (position == 4 || position == 7 || position == 12) {
             1
         } else {
             2

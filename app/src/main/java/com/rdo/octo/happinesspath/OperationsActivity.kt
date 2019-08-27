@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.operation_scroll_content.*
 
 class OperationsActivity : AppCompatActivity() {
 
-    val operationsAdapter : OperationsAdapter by lazy {  OperationsAdapter() }
+    val operationsAdapter : OperationsAdapter by lazy {  OperationsAdapter(::openCompleteProfilePopUp) }
 
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -45,6 +45,10 @@ class OperationsActivity : AppCompatActivity() {
         addAnimation()
 
         initButtons()
+
+    }
+
+    private fun openCompleteProfilePopUp() {
 
     }
 

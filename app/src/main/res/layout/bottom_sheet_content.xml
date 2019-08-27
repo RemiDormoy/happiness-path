@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_bottom_background"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+    <View
+        android:id="@+id/textView12"
+        android:layout_width="40dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fileImageView"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_green"
+        android:padding="16dp"
+        android:src="@drawable/ic_file"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/patternNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Pattern #5"
+        app:layout_constraintBottom_toTopOf="@+id/patternTitleTextView"
+        app:layout_constraintStart_toEndOf="@+id/fileImageView"
+        app:layout_constraintTop_toTopOf="@+id/fileImageView" />
+
+    <TextView
+        android:id="@+id/patternTitleTextView"
+        android:textSize="18sp"
+        android:fontFamily="@font/dmsansbold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Listes augmentées"
+        app:layout_constraintBottom_toBottomOf="@+id/fileImageView"
+        app:layout_constraintStart_toStartOf="@+id/patternNumberTextView"
+        app:layout_constraintTop_toBottomOf="@+id/patternNumberTextView" />
+
+    <ImageView
+        android:id="@+id/patternImageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fileImageView"
+        app:srcCompat="@drawable/image_bottom_sheet" />
+
+    <TextView
+        android:id="@+id/patternContentTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Les applications ont aujourd’hui de plus en plus de fonctionnalités à offrir et il est de plus en plus dur de toutes les proposer à l’utilisateur sans le perdre dans des menus interminables et difficiles à déchiffrer.\n\nPour remédier à ce problème, de plus en plus d’applications ont petit à petit inséré dans leur listes de contenus différents boutons, bannières ou raccourcis vers ces fonctionnalités.\n\nGrâce à ces listes “augmentées”, l’utilisateur peut se promener parmis tout ce que l’application a à offrir tout en restant dans un format qui lui est en plus familier."
+        android:paddingBottom="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/patternImageView"
+        app:layout_constraintStart_toStartOf="@+id/patternImageView"
+        app:layout_constraintTop_toBottomOf="@+id/patternImageView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
