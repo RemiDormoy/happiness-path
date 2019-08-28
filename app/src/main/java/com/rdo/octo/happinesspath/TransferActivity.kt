@@ -49,19 +49,6 @@ class TransferActivity : AppCompatActivity() {
         }
 
         selectedContactContainer1.visibility = INVISIBLE
-        transferAmountContinueButton.setOnClickListener {
-            step = 2
-            val animator = ValueAnimator.ofFloat(cardView3.height.toFloat(), 0f)
-            animator.duration = 500
-            animator.interpolator = DecelerateInterpolator()
-            animator.addUpdateListener {
-                cardView3.translationY = it.animatedValue as Float
-                val progress = 1f - (it.animatedValue as Float) / cardView3.height.toFloat()
-                transferAmountContainer.progress = progress
-                amountEditText.isEnabled = false
-            }
-            animator.start()
-        }
         transferConfirmButton.setOnClickListener {
             initFingerprint()
         }
@@ -104,6 +91,7 @@ class TransferActivity : AppCompatActivity() {
                         amountEditText.setText(newText)
                         amountEditText.setSelection(newText.length - 2)
                     }
+                    enableAmountButton()
                 }
 
                 override fun beforeTextChanged(
@@ -133,6 +121,23 @@ class TransferActivity : AppCompatActivity() {
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             })
         }
+    }
+
+    private fun enableAmountButton() {
+        transferAmountContinueButton.setOnClickListener {
+            step = 2
+            val animator = ValueAnimator.ofFloat(cardView3.height.toFloat(), 0f)
+            animator.duration = 500
+            animator.interpolator = DecelerateInterpolator()
+            animator.addUpdateListener {
+                cardView3.translationY = it.animatedValue as Float
+                val progress = 1f - (it.animatedValue as Float) / cardView3.height.toFloat()
+                transferAmountContainer.progress = progress
+                amountEditText.isEnabled = false
+            }
+            animator.start()
+        }
+        transferAmountContinueButton.setBackgroundResource(R.drawable.border_button_background_selected)
     }
 
     private fun click(contact: Contact, y: Float) {

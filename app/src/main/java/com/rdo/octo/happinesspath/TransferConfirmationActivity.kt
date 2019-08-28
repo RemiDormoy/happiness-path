@@ -1,19 +1,9 @@
 package com.rdo.octo.happinesspath
 
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.text.Layout.JUSTIFICATION_MODE_INTER_WORD
-import android.view.View
-import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_transfer_confirmation.*
-import kotlinx.android.synthetic.main.bottom_sheet_content.*
-import kotlin.math.abs
 
 class TransferConfirmationActivity : BottomSheetActivity() {
 
@@ -30,6 +20,9 @@ class TransferConfirmationActivity : BottomSheetActivity() {
         }, 1500)
         button9.setOnClickListener {
             finish()
+        }
+        lottieNotificationAnimation.setOnClickListener {
+            openBottomSheetMwahaha()
         }
         lottieNotification.setOnClickListener {
             openBottomSheetMwahaha()

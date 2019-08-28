@@ -1,13 +1,10 @@
 package com.rdo.octo.happinesspath
 
-import android.animation.ObjectAnimator
 import android.graphics.LinearGradient
 import android.graphics.Paint
 import android.graphics.Shader
 import android.os.Bundle
 import android.os.Handler
-import android.view.animation.BounceInterpolator
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
@@ -146,13 +143,13 @@ class OperationsActivity : BottomSheetActivity() {
                     lineContainer.height,
                     gradientPaint
                 )
-            lineContainer.background = operationLineDrawable
-            operationLineDrawable.setPoints(
+            //lineContainer.background = operationLineDrawable
+            /*operationLineDrawable.setPoints(
                 listOf(120, 100, 134, 345, 890, 300, 500, 432, 999, 666, 700, 1000, 1200, 1500)
-            )
+            )*/
         }
 
-        Handler().postDelayed({
+        /*Handler().postDelayed({
             val animator = ObjectAnimator.ofFloat(0f, 1f)
             animator.duration = 1000
             animator.interpolator = BounceInterpolator()
@@ -160,7 +157,7 @@ class OperationsActivity : BottomSheetActivity() {
                 operationLineDrawable.setScale(it.animatedValue as Float)
             }
             animator.start()
-        }, 500)
+        }, 500)*/
     }
 }
 

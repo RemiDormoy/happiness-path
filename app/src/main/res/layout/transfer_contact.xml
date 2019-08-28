@@ -48,7 +48,8 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/dmsansbold"
         android:layout_marginStart="16dp"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
         android:layout_height="wrap_content"
         android:text="Destinataires"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:elevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/border_button_background_selected"
         android:layout_height="wrap_content">
@@ -83,6 +85,7 @@
             <TextView
                 android:id="@+id/yoloText"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/dmsansbold"
                 android:layout_height="wrap_content"
                 android:text="Suivant"
                 android:layout_marginStart="16dp"

@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textColor="@android:color/white"
-        android:text="Envoie en cours ..."
+        android:text="Envoi en cours ..."
         app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
         app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
         app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textColor="@android:color/white"
-        android:text="Bravo ! C'est un succès !"
+        android:text="Bravo ! Transfert réussi !"
         app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
         app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
         app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />
@@ -63,6 +63,7 @@
             android:gravity="center"
             android:background="?attr/selectableItemBackground"
             android:padding="16dp"
+            android:fontFamily="@font/dmsansbold"
             android:text="Retour acceuil"
             android:textColor="@color/colorPrimaryDark" />
     </androidx.cardview.widget.CardView>
@@ -79,5 +80,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/sendTextView"
         app:layout_constraintEnd_toStartOf="@+id/sendTextView"
         app:layout_constraintTop_toTopOf="@+id/sendTextView" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieNotificationAnimation"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/notification"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@+id/lottieAnimationView"
+        app:layout_constraintBottom_toTopOf="@+id/lottieAnimationView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

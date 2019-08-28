@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/operationHeaderContainer"
-    android:background="@color/alizouzBlue"
+    android:background="@color/colorPrimaryDark"
     android:paddingTop="24dp"
     app:layoutDescription="@xml/operation_scene"
     tools:showIn="@layout/activity_operations">
@@ -37,9 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        android:text="Good Morning Jonathan !"
+        android:textSize="14sp"
+        android:layout_marginTop="24dp"
+        android:text="Bonjour !"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -50,10 +50,9 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/nunito_semibold"
+        android:fontFamily="@font/dmsansbold"
         android:text="€ 1673,00"
-        android:textStyle="bold"
-        android:textSize="32sp"
+        android:textSize="40sp"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -97,6 +96,7 @@
             android:layout_marginTop="24dp"
             android:alpha="0.5"
             android:text="1500"
+            android:maxLines="1"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -119,6 +119,7 @@
             android:alpha="0.5"
             android:textColor="@android:color/white"
             android:layout_marginStart="16dp"
+            android:maxLines="1"
             android:layout_marginTop="24dp"
             android:text="1000"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,11 +144,25 @@
             android:textColor="@android:color/white"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:maxLines="1"
             android:text="500"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieNotification"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/chart"
+        android:scaleType="centerCrop"/>
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

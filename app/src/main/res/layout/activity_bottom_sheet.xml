@@ -18,4 +18,5 @@
         android:background="@android:color/black"/>
 
     <include layout="@layout/bottom_sheet_content" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

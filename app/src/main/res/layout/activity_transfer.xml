@@ -9,12 +9,13 @@
 
     <TextView
         android:id="@+id/titleTextView"
-        android:text="Virements"
+        android:text="Transferts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="16dp"
-        android:textSize="24sp"
-        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/dmsansbold"
+        android:layout_marginTop="32dp"
         android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -85,7 +86,7 @@
         android:id="@+id/cardView3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/card_bottom_background"
         android:elevation="48dp"
         app:layout_constraintBottom_toBottomOf="parent"

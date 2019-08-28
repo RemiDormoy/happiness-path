@@ -23,7 +23,7 @@
             android:orientation="horizontal"
             android:padding="20dp"
             android:gravity="center"
-            android:background="@color/alizouzFushia"
+            android:background="#6F7073"
             android:layout_height="wrap_content">
 
             <TextView
