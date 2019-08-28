@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Pattern #5"
+        android:text="Pattern #"
         app:layout_constraintBottom_toTopOf="@+id/patternTitleTextView"
         app:layout_constraintStart_toEndOf="@+id/fileImageView"
         app:layout_constraintTop_toTopOf="@+id/fileImageView" />
@@ -50,33 +50,47 @@
         android:fontFamily="@font/dmsansbold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Listes augmentées"
+        android:text="@string/title_augmented_list_1"
         app:layout_constraintBottom_toBottomOf="@+id/fileImageView"
         app:layout_constraintStart_toStartOf="@+id/patternNumberTextView"
         app:layout_constraintTop_toBottomOf="@+id/patternNumberTextView" />
 
-    <ImageView
-        android:id="@+id/patternImageView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:scaleType="fitStart"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fileImageView"
-        app:srcCompat="@drawable/image_bottom_sheet" />
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/patternContentTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Les applications ont aujourd’hui de plus en plus de fonctionnalités à offrir et il est de plus en plus dur de toutes les proposer à l’utilisateur sans le perdre dans des menus interminables et difficiles à déchiffrer.\n\nPour remédier à ce problème, de plus en plus d’applications ont petit à petit inséré dans leur listes de contenus différents boutons, bannières ou raccourcis vers ces fonctionnalités.\n\nGrâce à ces listes “augmentées”, l’utilisateur peut se promener parmis tout ce que l’application a à offrir tout en restant dans un format qui lui est en plus familier."
-        android:paddingBottom="32dp"
-        app:layout_constraintEnd_toEndOf="@+id/patternImageView"
-        app:layout_constraintStart_toStartOf="@+id/patternImageView"
-        app:layout_constraintTop_toBottomOf="@+id/patternImageView" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/patternImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fileImageView"
+                app:srcCompat="@drawable/image_augmented_list" />
+
+            <TextView
+                android:id="@+id/patternContentTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/content_augmented_list"
+                android:paddingBottom="32dp"
+                app:layout_constraintEnd_toEndOf="@+id/patternImageView"
+                app:layout_constraintStart_toStartOf="@+id/patternImageView"
+                app:layout_constraintTop_toBottomOf="@+id/patternImageView" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

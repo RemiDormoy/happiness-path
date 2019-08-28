@@ -25,7 +25,7 @@ import android.text.TextWatcher
 import android.view.View.*
 
 
-class TransferActivity : AppCompatActivity() {
+class TransferActivity : BottomSheetActivity() {
 
     private val contactAdapter: ContactAdapter by lazy { ContactAdapter(::click) }
     private val addedContactAdapter: AddedContactAdapter by lazy {
@@ -85,13 +85,21 @@ class TransferActivity : AppCompatActivity() {
             colorAnimation.start()
             amountEditText.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {
-                    val textWithout = amountEditText.getText().toString().replace(" €", "")
-                    val newText = textWithout + " €"
-                    if (newText != amountEditText.getText().toString()) {
-                        amountEditText.setText(newText)
-                        amountEditText.setSelection(newText.length - 2)
+                    if (amountEditText.getText().isBlank()) {
+                        return
                     }
-                    enableAmountButton()
+                    val textWithout = amountEditText.getText().toString().replace("€", "").trim()
+                    if (textWithout.isBlank()) {
+                        amountEditText.setText("")
+                        disableButton()
+                    } else {
+                        val newText = textWithout + " €"
+                        if (newText != amountEditText.getText().toString()) {
+                            amountEditText.setText(newText)
+                            amountEditText.setSelection(newText.length - 2)
+                        }
+                        enableAmountButton()
+                    }
                 }
 
                 override fun beforeTextChanged(
@@ -138,6 +146,12 @@ class TransferActivity : AppCompatActivity() {
             animator.start()
         }
         transferAmountContinueButton.setBackgroundResource(R.drawable.border_button_background_selected)
+    }
+
+    private fun disableButton() {
+        transferAmountContinueButton.setOnClickListener {
+        }
+        transferAmountContinueButton.setBackgroundResource(R.drawable.border_button_background_disabled)
     }
 
     private fun click(contact: Contact, y: Float) {

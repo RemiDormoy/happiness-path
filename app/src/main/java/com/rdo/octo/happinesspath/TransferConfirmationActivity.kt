@@ -1,5 +1,6 @@
 package com.rdo.octo.happinesspath
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View.VISIBLE
@@ -19,13 +20,14 @@ class TransferConfirmationActivity : BottomSheetActivity() {
             lottieNotification.visibility = VISIBLE
         }, 1500)
         button9.setOnClickListener {
+            startActivity(Intent(this, OperationsActivity::class.java))
             finish()
         }
         lottieNotificationAnimation.setOnClickListener {
-            openBottomSheetMwahaha()
+            openBottomSheetMwahaha(Pattern.KEEP_THEM_WAITING)
         }
         lottieNotification.setOnClickListener {
-            openBottomSheetMwahaha()
+            openBottomSheetMwahaha(Pattern.GRATIFICATION)
         }
     }
 }

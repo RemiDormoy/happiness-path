@@ -6,9 +6,11 @@ import android.graphics.Shader
 import android.os.Bundle
 import android.os.Handler
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
+import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_operations.*
 import kotlinx.android.synthetic.main.line_container.lineContainer
 import kotlinx.android.synthetic.main.operation_header_collapsed.*
@@ -43,10 +45,14 @@ class OperationsActivity : BottomSheetActivity() {
 
         initButtons()
 
+        imageView.setOnClickListener {
+            drawerRoot.openDrawer(GravityCompat.START)
+        }
+
     }
 
     private fun openCompleteProfilePopUp() {
-        openBottomSheetMwahaha()
+        openBottomSheetMwahaha(Pattern.AUGMENTED_LIST)
     }
 
     private fun initButtons() {
