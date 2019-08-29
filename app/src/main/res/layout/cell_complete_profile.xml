@@ -14,6 +14,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:translationZ="2dp"
         android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="wrap_content">
@@ -50,6 +51,7 @@
         app:layout_constraintTop_toTopOf="@+id/card1"
         app:layout_constraintBottom_toBottomOf="@+id/card1"
         android:layout_gravity="center_vertical"
+        android:translationZ="2dp"
         app:cardCornerRadius="8dp"
         android:layout_marginStart="16dp"
         android:layout_height="wrap_content">
@@ -66,6 +68,7 @@
         android:id="@+id/lottieNotification"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:translationZ="2dp"
         android:elevation="60dp"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"

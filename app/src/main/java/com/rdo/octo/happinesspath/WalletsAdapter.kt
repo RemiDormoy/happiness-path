@@ -6,15 +6,15 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cell_wallet.view.*
 
-class WalletsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class WalletsAdapter(private val clickListener: () -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val list = listOf(
-        Wallet("€ 328", "Birthday Tom"),
-        Wallet("€ 145", "NYC"),
-        Wallet("€ 1200", "New Car"),
-        Wallet("€ 320", "Travel to London"),
-        Wallet("€ 411", "Playstation"),
-        Wallet("€ 90", "Cinema savings")
+        Wallet(R.drawable.ic_transfert, "Transferts"),
+        Wallet(R.drawable.ic_mes_comptes, "Mes comptes"),
+        Wallet(R.drawable.ic_dashboard, "Dashboards"),
+        Wallet(R.drawable.ic_mes_comptes, "Travel to London"),
+        Wallet(R.drawable.ic_mes_comptes, "Playstation"),
+        Wallet(R.drawable.ic_mes_comptes, "Cinema savings")
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -39,14 +39,19 @@ class WalletsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             else -> R.color.alizouzBlueLight
         }
         val color = ContextCompat.getColor(holder.itemView.context, colorRes)
-        holder.itemView.walletAmountTextView.text = list[position].amount
+        holder.itemView.walletAmountTextView.setImageResource(list[position].icon)
         holder.itemView.walletNameTextView.text = list[position].name
         holder.itemView.walletContainer.setBackgroundColor(color)
+        if (position == 0) {
+            holder.itemView.walletContainer.setOnClickListener {  clickListener() }
+        } else {
+            holder.itemView.walletContainer.setOnClickListener {  }
+        }
     }
 
 }
 
 data class Wallet(
-    val amount: String,
+    val icon: Int,
     val name: String
 )

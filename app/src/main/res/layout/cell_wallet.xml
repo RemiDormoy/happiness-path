@@ -8,6 +8,8 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
+        android:id="@+id/walletRoot"
+        android:translationZ="4dp"
         android:layout_margin="12dp"
         app:cardCornerRadius="24dp">
 
@@ -18,20 +20,19 @@
             android:orientation="vertical"
             android:layout_height="match_parent">
 
-            <TextView
+            <ImageView
                 android:id="@+id/walletAmountTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_extrabold"
-                android:textColor="@android:color/white"
-                android:textSize="24sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/walletNameTextView"
-                android:textSize="18sp"
+                android:textSize="16sp"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:fontFamily="@font/nunito_extrabold"
-                android:layout_height="wrap_content"
+                android:fontFamily="@font/dmsansbold"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
                 android:textColor="@android:color/white"/>
 
         </LinearLayout>

@@ -8,6 +8,7 @@
         android:id="@+id/operationHeaderCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:translationZ="4dp"
         android:translationY="-24dp"
         app:cardCornerRadius="24dp"
         app:layout_constraintTop_toTopOf="parent">

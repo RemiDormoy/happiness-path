@@ -2,6 +2,9 @@ package com.rdo.octo.happinesspath
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -22,7 +25,20 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.Executors
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.GestureDetector
+import android.view.MotionEvent
+import android.view.View
 import android.view.View.*
+import android.view.inputmethod.InputMethodManager
+import androidx.core.view.GestureDetectorCompat
+import kotlin.math.abs
+import androidx.core.content.ContextCompat.getSystemService
+import android.content.Context.INPUT_METHOD_SERVICE
+import androidx.core.content.ContextCompat.getSystemService
+
+
+
+
 
 
 class TransferActivity : BottomSheetActivity() {
@@ -35,6 +51,9 @@ class TransferActivity : BottomSheetActivity() {
         )
     }
     private var step = 0
+    private var scroll = 0f
+    private lateinit var detector: GestureDetectorCompat
+    private lateinit var detector1: GestureDetectorCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +71,84 @@ class TransferActivity : BottomSheetActivity() {
         transferConfirmButton.setOnClickListener {
             initFingerprint()
         }
+        detector = GestureDetectorCompat(this, object : GestureDetector.OnGestureListener {
+            override fun onScroll(
+                e1: MotionEvent,
+                e2: MotionEvent,
+                distanceX: Float,
+                distanceY: Float
+            ): Boolean {
+                return true
+            }
+
+            override fun onShowPress(e: MotionEvent?) {
+                // Do nothing
+            }
+
+            override fun onSingleTapUp(e: MotionEvent?): Boolean {
+                return false
+            }
+
+            override fun onDown(e: MotionEvent?): Boolean {
+                return true
+            }
+
+            override fun onFling(
+                e1: MotionEvent,
+                e2: MotionEvent,
+                velocityX: Float,
+                velocityY: Float
+            ): Boolean {
+                val scroll = e2.y - e1.y
+                if (scroll > 250) {
+                    returnToCard2()
+                }
+                return true
+            }
+
+            override fun onLongPress(e: MotionEvent?) {
+                // Do nothing
+            }
+        })
+        detector1 = GestureDetectorCompat(this, object : GestureDetector.OnGestureListener {
+            override fun onScroll(
+                e1: MotionEvent,
+                e2: MotionEvent,
+                distanceX: Float,
+                distanceY: Float
+            ): Boolean {
+                return true
+            }
+
+            override fun onShowPress(e: MotionEvent?) {
+                // Do nothing
+            }
+
+            override fun onSingleTapUp(e: MotionEvent?): Boolean {
+                return false
+            }
+
+            override fun onDown(e: MotionEvent?): Boolean {
+                return true
+            }
+
+            override fun onFling(
+                e1: MotionEvent,
+                e2: MotionEvent,
+                velocityX: Float,
+                velocityY: Float
+            ): Boolean {
+                val scroll = e2.y - e1.y
+                if (scroll > 250) {
+                    returnToCard1()
+                }
+                return true
+            }
+
+            override fun onLongPress(e: MotionEvent?) {
+                // Do nothing
+            }
+        })
         contactRecyclerView.layoutManager = LinearLayoutManager(this)
         contactRecyclerView.adapter = contactAdapter
         val linearLayoutManager = LinearLayoutManager(this)
@@ -80,7 +177,8 @@ class TransferActivity : BottomSheetActivity() {
             colorAnimation.addUpdateListener {
                 goToAmountButton.setBackgroundColor(it.animatedValue as Int)
             }
-            reasonEditText.hint = "Virement à ${addedContactAdapter.list.map { it.name }.joinToString(", ")}"
+            reasonEditText.hint =
+                "Virement à ${addedContactAdapter.list.map { it.name }.joinToString(", ")}"
             animator.start()
             colorAnimation.start()
             amountEditText.addTextChangedListener(object : TextWatcher {
@@ -129,11 +227,19 @@ class TransferActivity : BottomSheetActivity() {
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             })
         }
+        transferConfirmRoot.setOnTouchListener { v, event ->
+            detector.onTouchEvent(event)
+        }
+        transferAmountContainer.setOnTouchListener { v, event ->
+            detector1.onTouchEvent(event)
+        }
+
     }
 
     private fun enableAmountButton() {
         transferAmountContinueButton.setOnClickListener {
             step = 2
+            hideKeyboard()
             val animator = ValueAnimator.ofFloat(cardView3.height.toFloat(), 0f)
             animator.duration = 500
             animator.interpolator = DecelerateInterpolator()
@@ -143,6 +249,11 @@ class TransferActivity : BottomSheetActivity() {
                 transferAmountContainer.progress = progress
                 amountEditText.isEnabled = false
             }
+            Handler().postDelayed({
+                showKeyboard()
+            }, 800)
+            animator.startDelay = 500
+            reasonEditText.requestFocus()
             animator.start()
         }
         transferAmountContinueButton.setBackgroundResource(R.drawable.border_button_background_selected)
@@ -231,7 +342,12 @@ class TransferActivity : BottomSheetActivity() {
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
-                    startActivity(Intent(this@TransferActivity, TransferConfirmationActivity::class.java))
+                    startActivity(
+                        Intent(
+                            this@TransferActivity,
+                            TransferConfirmationActivity::class.java
+                        )
+                    )
                     finish()
                 }
 
@@ -252,4 +368,21 @@ class TransferActivity : BottomSheetActivity() {
             .build()
         biometricPrompt.authenticate(promptInfo)
     }
+}
+
+@SuppressLint("ServiceCast")
+fun Activity.hideKeyboard() {
+    val imm = this.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    //Find the currently focused view, so we can grab the correct window token from it.
+    var view = this.currentFocus
+    //If no view currently has focus, create a new one, just so we can grab a window token from it
+    if (view == null) {
+        view = View(this)
+    }
+    imm.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+fun Activity.showKeyboard() {
+    val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 }

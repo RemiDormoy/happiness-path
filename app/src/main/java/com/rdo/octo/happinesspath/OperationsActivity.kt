@@ -1,5 +1,6 @@
 package com.rdo.octo.happinesspath
 
+import android.content.Intent
 import android.graphics.LinearGradient
 import android.graphics.Paint
 import android.graphics.Shader
@@ -117,7 +118,10 @@ class OperationsActivity : BottomSheetActivity() {
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = HORIZONTAL
         walletsRecyclerView.layoutManager = linearLayoutManager
-        walletsRecyclerView.adapter = WalletsAdapter()
+        walletsRecyclerView.adapter = WalletsAdapter {
+            startActivity(Intent(this, TransferActivity::class.java))
+            finish()
+        }
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = VERTICAL
