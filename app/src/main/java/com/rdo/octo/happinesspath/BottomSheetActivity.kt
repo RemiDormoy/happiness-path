@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
-import kotlinx.android.synthetic.main.activity_transfer_confirmation.*
 import kotlinx.android.synthetic.main.bottom_sheet_content.*
 import kotlinx.android.synthetic.main.cell_drawer.view.*
 import kotlinx.android.synthetic.main.drawer_content.*
@@ -76,7 +75,7 @@ abstract class BottomSheetActivity : AppCompatActivity() {
 
     private fun onDrawerItemClicked(id: Int) {
         when (id) {
-            1 -> startActivity(Intent(this, OperationsActivity::class.java))
+            1, 6 -> startActivity(Intent(this, OperationsActivity::class.java))
             4, 5 -> startActivity(Intent(this, TransferActivity::class.java))
             2, 3 -> startActivity(Intent(this, TransferConfirmationActivity::class.java))
 

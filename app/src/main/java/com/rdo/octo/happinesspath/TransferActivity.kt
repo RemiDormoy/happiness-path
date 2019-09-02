@@ -36,11 +36,6 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.content.Context.INPUT_METHOD_SERVICE
 import androidx.core.content.ContextCompat.getSystemService
 
-
-
-
-
-
 class TransferActivity : BottomSheetActivity() {
 
     private val contactAdapter: ContactAdapter by lazy { ContactAdapter(::click) }
@@ -191,12 +186,13 @@ class TransferActivity : BottomSheetActivity() {
                         amountEditText.setText("")
                         disableButton()
                     } else {
-                        val newText = textWithout + " €"
-                        if (newText != amountEditText.getText().toString()) {
+                        val newText = "$textWithout €"
+                        if (newText != amountEditText.text.toString()) {
                             amountEditText.setText(newText)
                             amountEditText.setSelection(newText.length - 2)
                         }
                         enableAmountButton()
+                        fakeTextView.text = amountEditText.text
                     }
                 }
 
@@ -237,12 +233,12 @@ class TransferActivity : BottomSheetActivity() {
         transferAmountContainer.setOnTouchListener { v, event ->
             detector1.onTouchEvent(event)
         }
-
     }
 
     private fun enableAmountButton() {
         transferAmountContinueButton.setOnClickListener {
             step = 2
+            hideKeyboard()
             val animator = ValueAnimator.ofFloat(cardView3.height.toFloat(), 0f)
             animator.duration = 500
             animator.interpolator = DecelerateInterpolator()
@@ -250,8 +246,10 @@ class TransferActivity : BottomSheetActivity() {
                 cardView3.translationY = it.animatedValue as Float
                 val progress = 1f - (it.animatedValue as Float) / cardView3.height.toFloat()
                 transferAmountContainer.progress = progress
+                amountEditText.requestFocus()
                 amountEditText.isEnabled = false
             }
+            animator.startDelay = 1500
             animator.startDelay = 500
             animator.start()
         }
@@ -259,8 +257,7 @@ class TransferActivity : BottomSheetActivity() {
     }
 
     private fun disableButton() {
-        transferAmountContinueButton.setOnClickListener {
-        }
+        transferAmountContinueButton.setOnClickListener {}
         transferAmountContinueButton.setBackgroundResource(R.drawable.border_button_background_disabled)
     }
 
@@ -292,6 +289,7 @@ class TransferActivity : BottomSheetActivity() {
 
     private fun returnToCard2() {
         step = 1
+        transferAmountContinueButton.visibility = VISIBLE
         val animator = ValueAnimator.ofFloat(0f, cardView3.height.toFloat())
         animator.duration = 500
         animator.interpolator = DecelerateInterpolator()
@@ -345,7 +343,7 @@ class TransferActivity : BottomSheetActivity() {
                         Intent(
                             this@TransferActivity,
                             TransferConfirmationActivity::class.java
-                        )
+                        ).putExtra("amount", amountEditText.text.toString())
                     )
                     finish()
                 }

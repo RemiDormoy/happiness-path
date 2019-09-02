@@ -3,6 +3,7 @@ package com.rdo.octo.happinesspath
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import kotlinx.android.synthetic.main.activity_transfer_confirmation.*
 
@@ -12,13 +13,17 @@ class TransferConfirmationActivity : BottomSheetActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transfer_confirmation)
         returnCardView.alpha = 0f
+        intent.getStringExtra("amount")?.let {
+            amountConfirmationTextView.text = it
+        }
         sendTextView.alpha = 0f
         Handler().postDelayed({
             returnCardView.animate().alpha(1f).start()
             sendTextView.animate().alpha(1f).start()
             sendingTextView.animate().alpha(0f).start()
             lottieNotification.visibility = VISIBLE
-        }, 1500)
+            amountConfirmationTextView.visibility = GONE
+        }, 2500)
         button9.setOnClickListener {
             startActivity(Intent(this, OperationsActivity::class.java))
             finish()

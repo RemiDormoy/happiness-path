@@ -145,17 +145,24 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieNotification"
+    <FrameLayout
+        android:id="@+id/bitchView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="false"
-        app:lottie_rawRes="@raw/chart"
-        android:scaleType="centerCrop" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieNotification"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/chart"
+            android:scaleType="centerCrop"/>
+    </FrameLayout>
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
