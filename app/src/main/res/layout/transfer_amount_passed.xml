@@ -18,7 +18,6 @@
         android:textSize="24sp"
         android:inputType="numberDecimal"
         android:hint="0 €"
-        android:enabled="false"
         android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView10"

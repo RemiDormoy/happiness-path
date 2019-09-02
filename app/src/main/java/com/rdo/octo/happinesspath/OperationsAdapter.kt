@@ -1,12 +1,12 @@
 package com.rdo.octo.happinesspath
 
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.cell_end_of_operations.view.*
 import kotlinx.android.synthetic.main.cell_operation.view.*
-import kotlinx.android.synthetic.main.cell_wallet.view.*
 
 class OperationsAdapter(private val completeProfileClick: () -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -82,6 +82,8 @@ class OperationsAdapter(private val completeProfileClick: () -> Unit) :
             holder.itemView.setOnClickListener {
                 completeProfileClick()
             }
+        } else {
+            holder.itemView.lottienEndView.visibility = View.GONE
         }
     }
 

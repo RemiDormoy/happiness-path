@@ -1,8 +1,10 @@
 package com.rdo.octo.happinesspath
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cell_contact.view.*
 
@@ -43,8 +45,18 @@ class ContactAdapter(private val clickHandler: (Contact, Float) -> Unit) :
         holder.itemView.contactImageView.setImageResource(contact.picture)
         holder.itemView.contactContainer.setOnClickListener {
             val newRes = if (contact.isChecked) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val typeface =  holder.itemView.resources.getFont(R.font.dmsans)
+                    holder.itemView.contactNameTextView.typeface = typeface
+                }
+                holder.itemView.contactNameTextView.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.black))
                 R.drawable.ic_plus
             } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val typeface =  holder.itemView.resources.getFont(R.font.dmsansbold)
+                    holder.itemView.contactNameTextView.typeface = typeface
+                }
+                holder.itemView.contactNameTextView.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.colorPrimaryDark))
                 R.drawable.ic_moins
             }
             holder.itemView.plusLessButton.animate().scaleY(0f).setDuration(250).scaleX(0f).withEndAction {

@@ -178,7 +178,7 @@ class TransferActivity : BottomSheetActivity() {
                 goToAmountButton.setBackgroundColor(it.animatedValue as Int)
             }
             reasonEditText.hint =
-                "Virement à ${addedContactAdapter.list.map { it.name }.joinToString(", ")}"
+                "Virement à ${addedContactAdapter.list.joinToString(", ") { it.name }}"
             animator.start()
             colorAnimation.start()
             amountEditText.addTextChangedListener(object : TextWatcher {
@@ -210,6 +210,10 @@ class TransferActivity : BottomSheetActivity() {
 
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             })
+            amountEditText.requestFocus()
+            Handler().postDelayed({
+                showKeyboard()
+            }, 500)
 
             reasonEditText.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {
@@ -239,7 +243,6 @@ class TransferActivity : BottomSheetActivity() {
     private fun enableAmountButton() {
         transferAmountContinueButton.setOnClickListener {
             step = 2
-            hideKeyboard()
             val animator = ValueAnimator.ofFloat(cardView3.height.toFloat(), 0f)
             animator.duration = 500
             animator.interpolator = DecelerateInterpolator()
@@ -249,11 +252,7 @@ class TransferActivity : BottomSheetActivity() {
                 transferAmountContainer.progress = progress
                 amountEditText.isEnabled = false
             }
-            Handler().postDelayed({
-                showKeyboard()
-            }, 800)
             animator.startDelay = 500
-            reasonEditText.requestFocus()
             animator.start()
         }
         transferAmountContinueButton.setBackgroundResource(R.drawable.border_button_background_selected)

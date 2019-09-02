@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.graphics.Shader
 import android.os.Bundle
 import android.os.Handler
+import android.view.View.VISIBLE
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_operations.*
+import kotlinx.android.synthetic.main.cell_end_of_operations.*
 import kotlinx.android.synthetic.main.line_container.lineContainer
 import kotlinx.android.synthetic.main.operation_header_collapsed.*
 import kotlinx.android.synthetic.main.operation_scroll_content.*
@@ -102,6 +104,10 @@ class OperationsActivity : BottomSheetActivity() {
         Handler().postDelayed({
             operationsScrollView.viewTreeObserver.addOnScrollChangedListener {
                 yolo()
+                if (!operationsScrollView.canScrollVertically(1)) {
+                    lottienEndView.visibility = VISIBLE
+                    lottienEndView.playAnimation()
+                }
             }
         }, 200)
 
