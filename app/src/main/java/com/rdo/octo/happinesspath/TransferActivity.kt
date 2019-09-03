@@ -35,6 +35,8 @@ import kotlin.math.abs
 import androidx.core.content.ContextCompat.getSystemService
 import android.content.Context.INPUT_METHOD_SERVICE
 import androidx.core.content.ContextCompat.getSystemService
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 
 class TransferActivity : BottomSheetActivity() {
 
@@ -47,6 +49,7 @@ class TransferActivity : BottomSheetActivity() {
     }
     private var step = 0
     private var scroll = 0f
+    private var isReasonCollapsed = false
     private lateinit var detector: GestureDetectorCompat
     private lateinit var detector1: GestureDetectorCompat
 
@@ -60,8 +63,17 @@ class TransferActivity : BottomSheetActivity() {
             cardView3.translationY = cardView3.height.toFloat()
             addedContacts.scaleY = 0f
             addedContacts.scaleX = 0f
+            val height1 = cardView.height.toFloat()
+            val height2 = cardView2.height.toFloat()
+            val height3 = cardView3.height.toFloat()
         }
 
+        KeyboardVisibilityEvent.setEventListener(
+        this,  object : KeyboardVisibilityEventListener {
+                override fun onVisibilityChanged(isOpen: Boolean) {
+                    onKeyboardEvent(isOpen)
+                }
+            })
         selectedContactContainer1.visibility = INVISIBLE
         transferConfirmButton.setOnClickListener {
             initFingerprint()
@@ -233,6 +245,39 @@ class TransferActivity : BottomSheetActivity() {
         transferAmountContainer.setOnTouchListener { v, event ->
             detector1.onTouchEvent(event)
         }
+        /*reasonEditText.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                toggleReason(true)
+            }
+        }
+        reasonEditText.setOnClickListener {
+            toggleReason(true)
+        }
+        reasonEditText.setOnEditorActionListener { v, actionId, event ->
+            toggleReason(false)
+            true
+        }*/
+    }
+
+    private fun onKeyboardEvent(isOpen: Boolean) {
+        if (step == 2) {
+            toggleReason(isOpen)
+        }
+    }
+
+    private fun toggleReason(hasFocus: Boolean) {
+        val animator = if (hasFocus) {
+            ValueAnimator.ofFloat(0f, 1f)
+        } else {
+            ValueAnimator.ofFloat(1f, 0f)
+        }
+        animator.addUpdateListener {
+            val value = it.animatedValue as Float
+            transferCardsRootToAnim.progress = value
+        }
+        animator.interpolator = DecelerateInterpolator()
+        animator.start()
+        isReasonCollapsed = hasFocus
     }
 
     private fun enableAmountButton() {
@@ -365,6 +410,8 @@ class TransferActivity : BottomSheetActivity() {
             .build()
         biometricPrompt.authenticate(promptInfo)
     }
+
+
 }
 
 @SuppressLint("ServiceCast")

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.motion.widget.MotionLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/transferCardsRootToAnim"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/transferCardsRootToAnim"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    app:layoutDescription="@xml/transfer_scene"
     android:background="@color/colorPrimaryDark"
     android:layout_height="match_parent">
 
@@ -28,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:visibility="invisible"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintEnd_toStartOf="@+id/button8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cardView"
@@ -50,7 +49,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:elevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button7"
@@ -69,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:elevation="32dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/card_bottom_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button7"
@@ -88,7 +87,7 @@
         android:id="@+id/cardView3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/card_bottom_background"
         android:elevation="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
