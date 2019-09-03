@@ -63,21 +63,27 @@ class TransferActivity : BottomSheetActivity() {
             cardView3.translationY = cardView3.height.toFloat()
             addedContacts.scaleY = 0f
             addedContacts.scaleX = 0f
-            val height1 = cardView.height.toFloat()
-            val height2 = cardView2.height.toFloat()
-            val height3 = cardView3.height.toFloat()
         }
-
-        KeyboardVisibilityEvent.setEventListener(
-        this,  object : KeyboardVisibilityEventListener {
-                override fun onVisibilityChanged(isOpen: Boolean) {
-                    onKeyboardEvent(isOpen)
-                }
-            })
+        KeyboardVisibilityEvent.setEventListener(this) { isOpen -> onKeyboardEvent(isOpen) }
         selectedContactContainer1.visibility = INVISIBLE
         transferConfirmButton.setOnClickListener {
             initFingerprint()
         }
+
+        textView.setOnClickListener {
+            if (step > 1) {
+                returnToCard2()
+            }
+            if (step > 0) {
+                returnToCard1()
+            }
+        }
+        textView10.setOnClickListener {
+            if (step > 1) {
+                returnToCard2()
+            }
+        }
+
         detector = GestureDetectorCompat(this, object : GestureDetector.OnGestureListener {
             override fun onScroll(
                 e1: MotionEvent,
@@ -245,18 +251,6 @@ class TransferActivity : BottomSheetActivity() {
         transferAmountContainer.setOnTouchListener { v, event ->
             detector1.onTouchEvent(event)
         }
-        /*reasonEditText.setOnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) {
-                toggleReason(true)
-            }
-        }
-        reasonEditText.setOnClickListener {
-            toggleReason(true)
-        }
-        reasonEditText.setOnEditorActionListener { v, actionId, event ->
-            toggleReason(false)
-            true
-        }*/
     }
 
     private fun onKeyboardEvent(isOpen: Boolean) {
@@ -282,7 +276,9 @@ class TransferActivity : BottomSheetActivity() {
 
     private fun enableAmountButton() {
         transferAmountContinueButton.setOnClickListener {
-            step = 2
+            Handler().postDelayed({
+                step = 2
+            }, 800)
             hideKeyboard()
             val animator = ValueAnimator.ofFloat(cardView3.height.toFloat(), 0f)
             animator.duration = 500
@@ -328,13 +324,17 @@ class TransferActivity : BottomSheetActivity() {
         when (step) {
             1 -> returnToCard1()
             2 -> returnToCard2()
-            else -> super.onBackPressed()
+            else -> {
+                startActivity(Intent(this, OperationsActivity::class.java))
+                super.onBackPressed()
+            }
         }
     }
 
     private fun returnToCard2() {
         step = 1
         transferAmountContinueButton.visibility = VISIBLE
+        hideKeyboard()
         val animator = ValueAnimator.ofFloat(0f, cardView3.height.toFloat())
         animator.duration = 500
         animator.interpolator = DecelerateInterpolator()
@@ -348,6 +348,7 @@ class TransferActivity : BottomSheetActivity() {
 
     private fun returnToCard1() {
         step = 0
+        hideKeyboard()
         selectedContactContainer1.visibility = INVISIBLE
         yoloText.visibility = VISIBLE
         yoloImage.visibility = VISIBLE

@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/contactCardContainer"
-    app:layoutDescription="@xml/contact_scene"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -57,42 +56,42 @@
 
     <FrameLayout
         android:id="@+id/addedContacts"
-        android:layout_width="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/border_button_background_selected"
-        app:layout_constraintTop_toTopOf="@id/textView"
         app:layout_constraintBottom_toBottomOf="@id/textView"
-        android:layout_height="wrap_content">
+        app:layout_constraintEnd_toEndOf="@+id/selectedContactContainer1"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@id/textView">
 
         <LinearLayout
             android:id="@+id/goToAmountButton"
             android:layout_width="match_parent"
-            android:padding="16dp"
-            android:gravity="center"
+            android:layout_height="72dp"
             android:background="?attr/selectableItemBackground"
-            android:layout_height="72dp">
+            android:gravity="center"
+            android:padding="16dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/addedContactsRecyclerView"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Suivant"
                 android:layout_marginStart="16dp"
-                android:textColor="@android:color/white"/>
+                android:text="Suivant"
+                android:textColor="@android:color/white" />
 
 
             <ImageView
-                android:layout_marginStart="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_right_arrow"/>
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_right_arrow" />
 
         </LinearLayout>
 
