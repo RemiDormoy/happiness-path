@@ -18,11 +18,14 @@ import kotlinx.android.synthetic.main.cell_end_of_operations.*
 import kotlinx.android.synthetic.main.line_container.lineContainer
 import kotlinx.android.synthetic.main.operation_header_collapsed.*
 import kotlinx.android.synthetic.main.operation_scroll_content.*
+import java.util.*
 
 class OperationsActivity : BottomSheetActivity() {
 
     val operationsAdapter : OperationsAdapter by lazy {  OperationsAdapter(::openCompleteProfilePopUp) }
 
+
+    private lateinit var lastScrollTime: Date
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
@@ -113,7 +116,23 @@ class OperationsActivity : BottomSheetActivity() {
 
     }
 
+    private fun showNotifs() {
+        operationsAdapter.showNotifs(true)
+    }
+
+    private fun hideNotifs() {
+        operationsAdapter.showNotifs(false)
+    }
+
     private fun yolo() {
+        val date = Date()
+        lastScrollTime = date
+        hideNotifs()
+        Handler().postDelayed({
+            if(lastScrollTime.time == date.time) {
+                showNotifs()
+            }
+        }, 300)
         val scroll = operationsScrollView.scrollY.toFloat()
         val progress = maxOf(0f, minOf(1f, scroll / 500f))
         operationHeaderContainer.progress = progress

@@ -2,9 +2,12 @@ package com.rdo.octo.happinesspath
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.cell_complete_profile.view.*
 import kotlinx.android.synthetic.main.cell_end_of_operations.view.*
 import kotlinx.android.synthetic.main.cell_operation.view.*
 
@@ -27,6 +30,8 @@ class OperationsAdapter(private val completeProfileClick: () -> Unit) :
         Operation("+3500,90€", "Salary"),
         Operation("-30,87€", "Cinema savings")
     )
+
+    private val notifsViews = mutableListOf<View>()
 
     var list = list1
 
@@ -82,8 +87,9 @@ class OperationsAdapter(private val completeProfileClick: () -> Unit) :
             holder.itemView.setOnClickListener {
                 completeProfileClick()
             }
+            notifsViews.add(holder.itemView.lottieNotification)
         } else {
-            holder.itemView.lottienEndView.visibility = View.GONE
+            holder.itemView.lottienEndView.visibility = GONE
         }
     }
 
@@ -104,6 +110,16 @@ class OperationsAdapter(private val completeProfileClick: () -> Unit) :
             else -> list1.filter { it.amount.startsWith("+") }
         }
         notifyDataSetChanged()
+    }
+
+    fun showNotifs(showNotifs: Boolean) {
+        notifsViews.forEach {
+            try {
+                it.visibility = if (showNotifs) VISIBLE else GONE
+            } catch (e: Throwable) {
+                // Do nothing
+            }
+        }
     }
 
 }
