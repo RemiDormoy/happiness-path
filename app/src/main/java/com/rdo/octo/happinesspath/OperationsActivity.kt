@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_operations.*
 import kotlinx.android.synthetic.main.cell_end_of_operations.*
 import kotlinx.android.synthetic.main.line_container.lineContainer
-import kotlinx.android.synthetic.main.operation_header_collapsed.*
+import kotlinx.android.synthetic.main.operation_header.*
 import kotlinx.android.synthetic.main.operation_scroll_content.*
 import java.util.*
 
@@ -135,8 +135,13 @@ class OperationsActivity : BottomSheetActivity() {
         }, 300)
         val scroll = operationsScrollView.scrollY.toFloat()
         val progress = maxOf(0f, minOf(1f, scroll / 500f))
-        operationHeaderContainer.progress = progress
         lineContainer.alpha = 1 - progress
+        bitchView.alpha = 1 - progress
+        operationHeaderCardView.translationY = -progress * fakeView.height - imageView2.height
+        imageView.translationY = progress * fakeView.height
+        imageView2.translationY = progress * fakeView.height
+        textView2.translationY = progress * fakeView.height
+        textView3.translationY = progress * fakeView.height
     }
 
     private fun initContent() {
