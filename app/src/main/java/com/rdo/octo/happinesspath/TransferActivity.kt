@@ -70,6 +70,13 @@ class TransferActivity : BottomSheetActivity() {
             initFingerprint()
         }
 
+        lottieNotificationConfirm.setOnClickListener {
+            openBottomSheetMwahaha(Pattern.FINGERPRINT)
+        }
+        lottieNotificationGesture.setOnClickListener {
+            openBottomSheetMwahaha(Pattern.GESTURES)
+        }
+
         textView.setOnClickListener {
             if (step > 1) {
                 returnToCard2()

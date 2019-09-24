@@ -11,7 +11,10 @@ import kotlinx.android.synthetic.main.cell_complete_profile.view.*
 import kotlinx.android.synthetic.main.cell_end_of_operations.view.*
 import kotlinx.android.synthetic.main.cell_operation.view.*
 
-class OperationsAdapter(private val completeProfileClick: () -> Unit) :
+class OperationsAdapter(
+    private val completeProfileClick: () -> Unit,
+    private val humaneClick: () -> Unit
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val list1 = listOf(
@@ -90,6 +93,10 @@ class OperationsAdapter(private val completeProfileClick: () -> Unit) :
             notifsViews.add(holder.itemView.lottieNotification)
         } else {
             holder.itemView.lottienEndView.visibility = GONE
+            notifsViews.add(holder.itemView.lottieNotification2)
+            holder.itemView.setOnClickListener {
+                humaneClick()
+            }
         }
     }
 

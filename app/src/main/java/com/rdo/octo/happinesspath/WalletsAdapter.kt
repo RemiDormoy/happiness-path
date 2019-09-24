@@ -1,20 +1,22 @@
 package com.rdo.octo.happinesspath
 
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cell_wallet.view.*
 
-class WalletsAdapter(private val clickListener: () -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class WalletsAdapter(private val clickListener: () -> Unit, private val lockListener: () -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val list = listOf(
         Wallet(R.drawable.ic_transfert, "Transferts"),
-        Wallet(R.drawable.ic_mes_comptes, "Mes comptes"),
-        Wallet(R.drawable.ic_dashboard, "Dashboards"),
-        Wallet(R.drawable.ic_mes_comptes, "Travel to London"),
-        Wallet(R.drawable.ic_mes_comptes, "Playstation"),
-        Wallet(R.drawable.ic_mes_comptes, "Cinema savings")
+        Wallet(R.drawable.ic_lock_black_24dp, "Mes comptes"),
+        Wallet(R.drawable.ic_lock_black_24dp, "Dashboards"),
+        Wallet(R.drawable.ic_lock_black_24dp, "Travel to London"),
+        Wallet(R.drawable.ic_lock_black_24dp, "Playstation"),
+        Wallet(R.drawable.ic_lock_black_24dp, "Cinema savings")
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -44,8 +46,10 @@ class WalletsAdapter(private val clickListener: () -> Unit) : RecyclerView.Adapt
         holder.itemView.walletContainer.setBackgroundColor(color)
         if (position == 0) {
             holder.itemView.walletContainer.setOnClickListener {  clickListener() }
+            holder.itemView.lottieNotificationLock.visibility = GONE
         } else {
-            holder.itemView.walletContainer.setOnClickListener {  }
+            holder.itemView.walletContainer.setOnClickListener {  lockListener() }
+            holder.itemView.lottieNotificationLock.visibility = VISIBLE
         }
     }
 

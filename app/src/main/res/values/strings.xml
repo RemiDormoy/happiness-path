@@ -4,8 +4,8 @@
     <string name="title_augmented_list_1">Listes augmentées</string>
     <string name="title_waiting">Keep them waiting</string>
     <string name="title_gratification">Gratification</string>
-    <string name="title_gestures">Fingerprint</string>
-    <string name="title_fingerprint">Gestures</string>
+    <string name="title_fingerprint">Fingerprint</string>
+    <string name="title_gestures">Gestures</string>
     <string name="content_humane">Mon app m’apporte des fonctionnalités qui me sont vraiment utiles, le temps que je passe dessus est un bon investissement. De plus, l’app apprend de mon comportement et me propose du contenu de plus en plus pertinent.</string>
     <string name="title_humane">Humane design</string>
     <string name="title_nav">Infinite Navigation</string>

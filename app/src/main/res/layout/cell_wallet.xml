@@ -1,41 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/walletRoot"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
-        android:id="@+id/walletRoot"
-        android:translationZ="4dp"
         android:layout_margin="12dp"
+        android:translationZ="4dp"
         app:cardCornerRadius="24dp">
 
-        <LinearLayout
-            android:id="@+id/walletContainer"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:padding="16dp"
-            android:orientation="vertical"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/walletAmountTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/walletNameTextView"
-                android:textSize="16sp"
-                android:layout_weight="1"
+            <LinearLayout
+                android:id="@+id/walletContainer"
                 android:layout_width="match_parent"
-                android:fontFamily="@font/dmsansbold"
-                android:layout_height="0dp"
-                android:gravity="center_vertical"
-                android:textColor="@android:color/white"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/walletAmountTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/walletNameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dmsansbold"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieNotificationLock"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:translationZ="2dp"
+                android:elevation="60dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="16dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/notification"
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="16dp"
+                />
+
+        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 

@@ -22,7 +22,7 @@ import java.util.*
 
 class OperationsActivity : BottomSheetActivity() {
 
-    val operationsAdapter : OperationsAdapter by lazy {  OperationsAdapter(::openCompleteProfilePopUp) }
+    val operationsAdapter : OperationsAdapter by lazy {  OperationsAdapter(::openCompleteProfilePopUp, ::humaneClick) }
 
 
     private lateinit var lastScrollTime: Date
@@ -59,6 +59,10 @@ class OperationsActivity : BottomSheetActivity() {
 
     private fun openCompleteProfilePopUp() {
         openBottomSheetMwahaha(Pattern.AUGMENTED_LIST)
+    }
+
+    private fun humaneClick() {
+        openBottomSheetMwahaha(Pattern.HUMANE_DESIGN)
     }
 
     private fun initButtons() {
@@ -148,10 +152,12 @@ class OperationsActivity : BottomSheetActivity() {
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = HORIZONTAL
         walletsRecyclerView.layoutManager = linearLayoutManager
-        walletsRecyclerView.adapter = WalletsAdapter {
+        walletsRecyclerView.adapter = WalletsAdapter( {
             startActivity(Intent(this, TransferActivity::class.java))
             finish()
-        }
+        }, {
+          openBottomSheetMwahaha(Pattern.SIMPLE_ACCESS)
+        })
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = VERTICAL
