@@ -26,6 +26,22 @@
         app:layout_constraintTop_toTopOf="@+id/textView10"
         app:layout_constraintBottom_toBottomOf="@+id/textView10"/>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieNotificationInfinite"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:translationZ="2dp"
+        android:elevation="60dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/notification"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <EditText
         android:id="@+id/fakeTextView"
         android:layout_width="0dp"

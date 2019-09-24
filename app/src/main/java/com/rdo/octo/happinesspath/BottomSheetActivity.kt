@@ -2,6 +2,7 @@ package com.rdo.octo.happinesspath
 
 import android.content.Intent
 import android.os.Build
+import android.os.Handler
 import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
@@ -57,12 +58,15 @@ abstract class BottomSheetActivity : AppCompatActivity() {
     }
 
     protected fun openBottomSheetMwahaha(pattern: Pattern) {
-        patternImageView.setImageResource(pattern.image)
-        patternContentTextView.setText(pattern.text)
-        fileImageView.setBackgroundResource(pattern.categoryColor)
-        patternNumberTextView.text = pattern.getPatternLabel()
-        patternTitleTextView.setText(pattern.title)
-        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        hideKeyboard()
+        Handler().postDelayed({
+            patternImageView.setImageResource(pattern.image)
+            patternContentTextView.setText(pattern.text)
+            fileImageView.setBackgroundResource(pattern.categoryColor)
+            patternNumberTextView.text = pattern.getPatternLabel()
+            patternTitleTextView.setText(pattern.title)
+            behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }, 300)
     }
 
     private fun initDrawer() {
@@ -85,7 +89,8 @@ abstract class BottomSheetActivity : AppCompatActivity() {
 
 }
 
-class DrawerAdapter(private val click: (Int) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DrawerAdapter(private val click: (Int) -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val list = Pattern.values().toList()
 

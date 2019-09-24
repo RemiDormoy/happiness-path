@@ -76,6 +76,12 @@ class TransferActivity : BottomSheetActivity() {
         lottieNotificationGesture.setOnClickListener {
             openBottomSheetMwahaha(Pattern.GESTURES)
         }
+        lottieNotificationBottom.setOnClickListener {
+            openBottomSheetMwahaha(Pattern.BOTTOM)
+        }
+        lottieNotificationInfinite.setOnClickListener {
+            openBottomSheetMwahaha(Pattern.INFINITE_NAV)
+        }
 
         textView.setOnClickListener {
             if (step > 1) {
