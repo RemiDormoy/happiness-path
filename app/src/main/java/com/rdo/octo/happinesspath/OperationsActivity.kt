@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.graphics.Shader
 import android.os.Bundle
 import android.os.Handler
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -42,6 +43,15 @@ class OperationsActivity : BottomSheetActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_operations)
+
+        if (intent.getBooleanExtra("showPopUp", false)) {
+            popUpAlpha.visibility = VISIBLE
+            popUpCard.visibility = VISIBLE
+            popUpAlpha.setOnClickListener {
+                popUpAlpha.visibility = GONE
+                popUpCard.visibility = GONE
+            }
+        }
 
         initLine()
 

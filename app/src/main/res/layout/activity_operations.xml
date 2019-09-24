@@ -8,8 +8,8 @@
         android:id="@+id/operationHeaderCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:translationZ="4dp"
         android:translationY="-24dp"
+        android:translationZ="4dp"
         app:cardCornerRadius="24dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -22,14 +22,14 @@
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="@id/operationHeaderCardView"/>
+        app:layout_constraintBottom_toBottomOf="@id/operationHeaderCardView" />
 
     <View
         android:id="@+id/yolo"
         android:layout_width="match_parent"
-        app:layout_constraintBottom_toBottomOf="@id/operationHeaderCardView"
+        android:layout_height="1dp"
         android:layout_marginBottom="40dp"
-        android:layout_height="1dp"/>
+        app:layout_constraintBottom_toBottomOf="@id/operationHeaderCardView" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/operationsScrollView"
@@ -41,5 +41,54 @@
         <include layout="@layout/operation_scroll_content" />
 
     </androidx.core.widget.NestedScrollView>
+
+
+    <View
+        android:id="@+id/popUpAlpha"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@android:color/black"
+        android:elevation="32dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/popUpCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/bg_background_white"
+        android:elevation="40dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Bonjour, nous c'est OCTO" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="On est gentils, n'hésitez pas à nous contacter" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="mob@octo.com" />
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

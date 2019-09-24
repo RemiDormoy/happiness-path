@@ -56,6 +56,7 @@ class TransferActivity : BottomSheetActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transfer)
+
         cardView2.post {
             cardView2.translationY = cardView2.height.toFloat()
         }

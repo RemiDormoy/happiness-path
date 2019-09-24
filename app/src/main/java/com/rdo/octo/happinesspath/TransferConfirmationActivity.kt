@@ -25,7 +25,7 @@ class TransferConfirmationActivity : BottomSheetActivity() {
             amountConfirmationTextView.visibility = GONE
         }, 2500)
         button9.setOnClickListener {
-            startActivity(Intent(this, OperationsActivity::class.java))
+            startActivity(Intent(this, OperationsActivity::class.java).putExtra("showPopUp", true))
             finish()
         }
         lottieNotificationAnimation.setOnClickListener {
