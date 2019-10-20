@@ -11,12 +11,11 @@
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/brm"
+        app:srcCompat="@drawable/yologo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
@@ -27,13 +26,27 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:textSize="54sp"
+        android:fontFamily="@font/dmsansbold"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:text="Mob Trends"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <TextView
+        android:id="@+id/bvaubbiubireabbvre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:textSize="16sp"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:text="Lorem ipsum explication dolor sit amet explication. Les applications ont."
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -44,13 +57,13 @@
         android:background="@drawable/bg_background_splash_info"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@id/quitSplashButton"
-        app:layout_constraintEnd_toEndOf="@+id/textView14"
-        app:layout_constraintStart_toStartOf="@+id/textView14">
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@color/alizouzFushia" />
+            android:src="@drawable/ic_group_copy" />
 
         <TextView
             android:layout_width="0dp"
@@ -76,6 +89,6 @@
         android:background="@drawable/bg_background_white"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView14"
-        app:layout_constraintStart_toStartOf="@+id/textView14" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

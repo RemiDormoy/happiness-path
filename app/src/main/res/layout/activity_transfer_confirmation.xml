@@ -81,26 +81,22 @@
             android:textColor="@color/colorPrimaryDark" />
     </androidx.cardview.widget.CardView>
 
-    <com.airbnb.lottie.LottieAnimationView
+    <ImageView
         android:id="@+id/lottieNotification"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:lottie_autoPlay="true"
         android:visibility="invisible"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/notification"
+        android:src="@drawable/ic_notification"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/sendTextView"
         app:layout_constraintEnd_toStartOf="@+id/sendTextView"
         app:layout_constraintTop_toTopOf="@+id/sendTextView" />
 
-    <com.airbnb.lottie.LottieAnimationView
+    <ImageView
         android:id="@+id/lottieNotificationAnimation"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/notification"
+        android:src="@drawable/ic_notification"
         android:scaleType="centerCrop"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"

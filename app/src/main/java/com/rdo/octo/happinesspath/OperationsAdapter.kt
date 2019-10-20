@@ -90,7 +90,16 @@ class OperationsAdapter(
             holder.itemView.setOnClickListener {
                 completeProfileClick()
             }
-            notifsViews.add(holder.itemView.lottieNotification)
+            holder.itemView.lottieNotification.visibility = GONE
+            when (position) {
+                4 -> {
+                    notifsViews.add(holder.itemView.lottieNotification)
+                    holder.itemView.setStyle("Complétez votre profil !", R.drawable.ic_gift)
+                }
+                7 -> holder.itemView.setStyle("Découvrez notre coach financier", R.drawable.ic_favorite_black_24dp)
+                12 -> holder.itemView.setStyle("Ajustez votre budget mensuel", R.drawable.ic_assignment_turned_in)
+
+            }
         } else {
             holder.itemView.lottienEndView.visibility = GONE
             notifsViews.add(holder.itemView.lottieNotification2)
@@ -129,6 +138,11 @@ class OperationsAdapter(
         }
     }
 
+}
+
+private fun View.setStyle(message: String, icon: Int) {
+    completeProfileImage.setImageResource(icon)
+    completeProfileText.text = message
 }
 
 data class Operation(

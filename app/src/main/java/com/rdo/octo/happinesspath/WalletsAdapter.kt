@@ -8,7 +8,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cell_wallet.view.*
 
-class WalletsAdapter(private val clickListener: () -> Unit, private val lockListener: () -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class WalletsAdapter(private val clickListener: () -> Unit, private val lockListener: () -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val list = listOf(
         Wallet(R.drawable.ic_transfert, "Transferts"),
@@ -45,11 +46,14 @@ class WalletsAdapter(private val clickListener: () -> Unit, private val lockList
         holder.itemView.walletNameTextView.text = list[position].name
         holder.itemView.walletContainer.setBackgroundColor(color)
         if (position == 0) {
-            holder.itemView.walletContainer.setOnClickListener {  clickListener() }
+            holder.itemView.walletContainer.setOnClickListener { clickListener() }
             holder.itemView.lottieNotificationLock.visibility = GONE
         } else {
-            holder.itemView.walletContainer.setOnClickListener {  lockListener() }
-            holder.itemView.lottieNotificationLock.visibility = VISIBLE
+            holder.itemView.walletContainer.setOnClickListener { lockListener() }
+                holder.itemView.lottieNotificationLock.visibility = VISIBLE
+            if (position > 1) {
+                holder.itemView.lottieNotificationLock.visibility = GONE
+            }
         }
     }
 

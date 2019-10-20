@@ -31,12 +31,8 @@ import android.view.View
 import android.view.View.*
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.GestureDetectorCompat
-import kotlin.math.abs
-import androidx.core.content.ContextCompat.getSystemService
 import android.content.Context.INPUT_METHOD_SERVICE
-import androidx.core.content.ContextCompat.getSystemService
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 
 class TransferActivity : BottomSheetActivity() {
 

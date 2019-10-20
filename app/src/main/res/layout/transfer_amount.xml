@@ -27,15 +27,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <com.airbnb.lottie.LottieAnimationView
+    <ImageView
         android:id="@+id/lottieNotificationInfinite"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:translationZ="2dp"
         android:elevation="60dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/notification"
+        android:src="@drawable/ic_notification"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="16dp"
@@ -74,15 +72,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.airbnb.lottie.LottieAnimationView
+        <ImageView
             android:id="@+id/lottieNotificationBottom"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:translationZ="2dp"
             android:elevation="60dp"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/notification"
+            android:src="@drawable/ic_notification"
             android:scaleType="centerCrop"
             android:layout_marginEnd="16dp"/>
 

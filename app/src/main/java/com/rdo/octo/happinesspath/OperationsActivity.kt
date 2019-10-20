@@ -43,6 +43,14 @@ class OperationsActivity : BottomSheetActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_operations)
+        imageView2.setOnClickListener {
+            popUpAlpha.visibility = VISIBLE
+            popUpCard.visibility = VISIBLE
+            popUpAlpha.setOnClickListener {
+                popUpAlpha.visibility = GONE
+                popUpCard.visibility = GONE
+            }
+        }
 
         if (intent.getBooleanExtra("showPopUp", false)) {
             popUpAlpha.visibility = VISIBLE
