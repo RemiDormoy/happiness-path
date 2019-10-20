@@ -46,6 +46,7 @@ class TransferActivity : BottomSheetActivity() {
     private var step = 0
     private var scroll = 0f
     private var isReasonCollapsed = false
+    private var isKeyboardOpen = false
     private lateinit var detector: GestureDetectorCompat
     private lateinit var detector1: GestureDetectorCompat
 
@@ -267,6 +268,7 @@ class TransferActivity : BottomSheetActivity() {
         if (step == 2) {
             toggleReason(isOpen)
         }
+        this.isKeyboardOpen = isOpen
     }
 
     private fun toggleReason(hasFocus: Boolean) {
@@ -345,6 +347,18 @@ class TransferActivity : BottomSheetActivity() {
         step = 1
         transferAmountContinueButton.visibility = VISIBLE
         hideKeyboard()
+        if (this.isKeyboardOpen) {
+            hideKeyboard()
+            toggleReason(false)
+            Handler().postDelayed({
+                actualyReturnToCard2()
+            }, 300)
+        } else {
+            actualyReturnToCard2()
+        }
+    }
+
+    private fun actualyReturnToCard2() {
         val animator = ValueAnimator.ofFloat(0f, cardView3.height.toFloat())
         animator.duration = 500
         animator.interpolator = DecelerateInterpolator()
@@ -358,7 +372,17 @@ class TransferActivity : BottomSheetActivity() {
 
     private fun returnToCard1() {
         step = 0
-        hideKeyboard()
+        if (this.isKeyboardOpen) {
+            hideKeyboard()
+            Handler().postDelayed({
+                actualyReturnToCard1()
+            }, 300)
+        } else {
+            actualyReturnToCard1()
+        }
+    }
+
+    private fun actualyReturnToCard1() {
         selectedContactContainer1.visibility = INVISIBLE
         yoloText.visibility = VISIBLE
         yoloImage.visibility = VISIBLE
@@ -387,7 +411,7 @@ class TransferActivity : BottomSheetActivity() {
                     GlobalScope.launch(Dispatchers.Main) {
                         Toast.makeText(
                             this@TransferActivity,
-                            "Called when an unrecoverable error has been encountered and the operation is complete.",
+                            "L'identification a échoué, veuillez réessayer",
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -409,7 +433,7 @@ class TransferActivity : BottomSheetActivity() {
                     GlobalScope.launch(Dispatchers.Main) {
                         Toast.makeText(
                             this@TransferActivity,
-                            "Called when a biometric is valid but not recognized.",
+                            "L'identification a échoué, veuillez réessayer",
                             Toast.LENGTH_LONG
                         ).show()
                     }

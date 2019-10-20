@@ -35,4 +35,9 @@ class TransferConfirmationActivity : BottomSheetActivity() {
             openBottomSheetMwahaha(Pattern.GRATIFICATION)
         }
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, OperationsActivity::class.java))
+        super.onBackPressed()
+    }
 }
