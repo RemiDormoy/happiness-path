@@ -1,13 +1,17 @@
 package com.rdo.octo.happinesspath
 
 import android.view.LayoutInflater
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cell_contact.view.*
 import kotlinx.android.synthetic.main.cell_contact_added.view.*
 
-class AddedContactAdapter(private val makeAppearance: () -> Unit, private val makeDisappear: () -> Unit) :
+class AddedContactAdapter(
+    private val makeAppearance: () -> Unit,
+    private val makeDisappear: () -> Unit
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val list: MutableList<Contact> = mutableListOf()
@@ -29,11 +33,19 @@ class AddedContactAdapter(private val makeAppearance: () -> Unit, private val ma
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val contact = list[position]
-        holder.itemView.imageAdded.setImageResource(contact.picture)
+        if (position == list.size - 1) {
+            holder.itemView.imageAddedContainer.scaleX = 0f
+            holder.itemView.imageAddedContainer.scaleY = 0f
+            holder.itemView.imageAdded.setImageResource(contact.picture)
+            holder.itemView.animate().scaleX(1f).scaleY(1f).start()
+        } else {
+            holder.itemView.imageAdded.setImageResource(contact.picture)
+        }
     }
 
     fun add(contact: Contact) {
         list.add(contact)
+        //notifyItemRangeChanged(list.size - 1, 1) fuck rémi trouve un truc ici wesh
         notifyDataSetChanged()
         if (list.size == 1) {
             makeAppearance()
@@ -41,8 +53,9 @@ class AddedContactAdapter(private val makeAppearance: () -> Unit, private val ma
     }
 
     fun remove(contact: Contact) {
+        val index = list.indexOf(contact)
         list.remove(contact)
-        notifyDataSetChanged()
+        notifyItemRemoved(index)
         if (list.isEmpty()) {
             makeDisappear()
         }

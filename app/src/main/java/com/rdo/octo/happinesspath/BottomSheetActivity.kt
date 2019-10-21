@@ -49,6 +49,18 @@ abstract class BottomSheetActivity : AppCompatActivity() {
         initDrawer()
     }
 
+    override fun onResume() {
+        super.onResume()
+        val pattern = intent.getIntExtra("patternId", -1)
+        Pattern.values().find {
+            it.id == pattern
+        }?.let {
+            Handler().postDelayed({
+                openBottomSheetMwahaha(it)
+            }, 500)
+        }
+    }
+
     override fun onBackPressed() {
         if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
             behavior.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -79,10 +91,24 @@ abstract class BottomSheetActivity : AppCompatActivity() {
 
     private fun onDrawerItemClicked(id: Int) {
         when (id) {
-            1, 6 -> startActivity(Intent(this, OperationsActivity::class.java))
-            4, 5 -> startActivity(Intent(this, TransferActivity::class.java))
-            2, 3 -> startActivity(Intent(this, TransferConfirmationActivity::class.java))
-
+            1, 6, 7 -> startActivity(
+                Intent(
+                    this,
+                    OperationsActivity::class.java
+                ).putExtra("patternId", id)
+            )
+            4, 5, 8, 9 -> startActivity(
+                Intent(
+                    this,
+                    TransferActivity::class.java
+                ).putExtra("patternId", id)
+            )
+            2, 3 -> startActivity(
+                Intent(
+                    this,
+                    TransferConfirmationActivity::class.java
+                ).putExtra("patternId", id)
+            )
         }
         finish()
     }
