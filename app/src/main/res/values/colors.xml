@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#5E3AC1</color>
-    <color name="colorAccent">#5E3AC1</color>
+    <color name="colorPrimaryDark">#0A2358</color>
+    <color name="colorAccent">#0A2358</color>
 
     <color name="alizouzBlue">#5060EE</color>
     <color name="alizouzPurple">#BAA3FF</color>
@@ -10,8 +10,8 @@
     <color name="alizouzGreen">#00CF7C</color>
     <color name="alizouzGreenWithAlpha01">#1A00CF7C</color>
     <color name="alizouzFushia">#F9888B</color>
-    <color name="alizouzBlack">#2E3948</color>
-    <color name="alizouzBlackWithAlpha01">#1A2E3948</color>
+    <color name="alizouzBlack">#0E2356</color>
+    <color name="alizouzBlackWithAlpha01">#1A0E2356</color>
 
 
 </resources>

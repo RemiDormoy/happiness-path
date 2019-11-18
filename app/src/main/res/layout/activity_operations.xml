@@ -68,24 +68,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:src="@drawable/contactpicture"/>
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Bonjour, nous c'est OCTO" />
+            android:fontFamily="@font/dmsansbold"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Hello !"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="On est gentils, n'hésitez pas à nous contacter" />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="mob@octo.com" />
+            android:layout_marginTop="24dp"
+            android:text="Nous c'est OCTO, on est gentils, n'hésitez pas à nous contacter" />
 
 
     </LinearLayout>

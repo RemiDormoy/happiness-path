@@ -39,7 +39,7 @@
         android:layout_marginStart="32dp"
         android:textSize="14sp"
         android:layout_marginTop="24dp"
-        android:text="Bonjour !"
+        android:text="Votre solde"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
