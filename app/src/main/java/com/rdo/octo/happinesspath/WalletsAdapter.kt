@@ -37,9 +37,9 @@ class WalletsAdapter(private val clickListener: () -> Unit, private val lockList
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val colorRes = when (position % 3) {
-            0 -> R.color.alizouzPurple
-            1 -> R.color.alizouzBlue
-            else -> R.color.alizouzBlueLight
+            0 -> R.color.alizouzGreen
+            1 -> R.color.alizouzPurple
+            else -> R.color.octoBlue
         }
         val color = ContextCompat.getColor(holder.itemView.context, colorRes)
         holder.itemView.walletAmountTextView.setImageResource(list[position].icon)

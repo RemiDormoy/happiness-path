@@ -7,10 +7,12 @@
     <color name="alizouzBlue">#5060EE</color>
     <color name="alizouzPurple">#BAA3FF</color>
     <color name="alizouzBlueLight">#5FAAFF</color>
-    <color name="alizouzGreen">#00CF7C</color>
+    <color name="octoBlue">#00B2CD</color>
     <color name="alizouzGreenWithAlpha01">#1A00CF7C</color>
+    <color name="octoBlueWithAlpha01">#1A00B2CD</color>
     <color name="alizouzFushia">#F9888B</color>
     <color name="alizouzBlack">#0E2356</color>
+    <color name="alizouzGreen">#0AA192</color>
     <color name="alizouzBlackWithAlpha01">#1A0E2356</color>
 
 

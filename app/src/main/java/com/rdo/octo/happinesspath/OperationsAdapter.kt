@@ -62,7 +62,7 @@ class OperationsAdapter(
         if (position < list.size && position != 4 && position != 7 && position != 12) {
             val colorRes = when (list[position].amount.first()) {
                 '-' -> android.R.color.darker_gray
-                else -> R.color.alizouzGreen
+                else -> R.color.octoBlue
             }
             val imageRes = when (list[position].amount.first()) {
                 '-' -> R.drawable.ic_up_arrow
@@ -70,7 +70,7 @@ class OperationsAdapter(
             }
             val backgroundColor = when (list[position].amount.first()) {
                 '-' -> R.color.alizouzBlackWithAlpha01
-                else -> R.color.alizouzGreenWithAlpha01
+                else -> R.color.octoBlueWithAlpha01
             }
             val color = ContextCompat.getColor(holder.itemView.context, colorRes)
             holder.itemView.operationNameTextView.text = list[position].name
