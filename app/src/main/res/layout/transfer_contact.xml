@@ -13,7 +13,7 @@
         android:id="@+id/contactRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewExplanation"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="16dp"/>
 
@@ -55,6 +55,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textViewExplanation"
+        android:layout_width="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@android:color/black"
+        android:layout_height="wrap_content"
+        android:text="Selectionnez les destinataires de votre virement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <FrameLayout
         android:id="@+id/addedContacts"
         android:layout_width="0dp"
@@ -63,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:elevation="16dp"
+        android:elevation="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/border_button_background_selected"
         android:layout_height="wrap_content">
