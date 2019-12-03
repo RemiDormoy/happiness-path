@@ -56,12 +56,12 @@
         android:id="@+id/popUpCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/bg_background_white"
         android:elevation="40dp"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="24dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,19 +75,21 @@
             android:src="@drawable/contactpicture"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/dmsansbold"
-            android:layout_gravity="center"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Hello !"/>
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:text="Qui se cache derrière cette appli ? Une communauté d’experts fondée sur le partage et la bienveillance : les Octos !" />
+
+        <TextView
+            android:id="@+id/discoverOctoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:padding="16dp"
+            android:text="Découvrir OCTO"
             android:layout_marginTop="24dp"
-            android:text="Nous c'est OCTO, on est gentils, n'hésitez pas à nous contacter" />
+            android:gravity="center"
+            android:background="@drawable/border_button_background_selected"/>
 
 
     </LinearLayout>

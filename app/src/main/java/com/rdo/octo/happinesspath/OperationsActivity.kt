@@ -20,6 +20,9 @@ import kotlinx.android.synthetic.main.line_container.lineContainer
 import kotlinx.android.synthetic.main.operation_header.*
 import kotlinx.android.synthetic.main.operation_scroll_content.*
 import java.util.*
+import android.net.Uri
+
+
 
 class OperationsActivity : BottomSheetActivity() {
 
@@ -50,6 +53,11 @@ class OperationsActivity : BottomSheetActivity() {
                 popUpAlpha.visibility = GONE
                 popUpCard.visibility = GONE
             }
+        }
+
+        discoverOctoButton.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.octo.com"))
+            startActivity(browserIntent)
         }
 
         if (intent.getBooleanExtra("showPopUp", false)) {
