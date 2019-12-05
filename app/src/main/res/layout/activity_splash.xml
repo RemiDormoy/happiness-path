@@ -31,24 +31,36 @@
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/quitSplashButton"
+        app:layout_constraintBottom_toTopOf="@+id/splashPageIndicator"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        android:id="@+id/quitSplashButton"
-        android:visibility="gone"
-        android:layout_width="0dp"
+    <com.rd.PageIndicatorView
+        android:id="@+id/splashPageIndicator"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/bg_background_white"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="Découvrir"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:piv_animationType="swap"
+        app:piv_dynamicCount="true"
+        app:piv_interactiveAnimation="true"
+        app:piv_selectedColor="@android:color/white"
+        app:piv_unselectedColor="@color/alizouzGrey"
+        android:layout_marginBottom="40dp"
+        app:piv_viewPager="@+id/splashViewPager" />
+
+    <ImageView
+        android:id="@+id/logoOctoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_octo_splash" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

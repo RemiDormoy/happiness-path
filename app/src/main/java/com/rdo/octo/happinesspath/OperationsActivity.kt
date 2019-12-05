@@ -22,8 +22,6 @@ import kotlinx.android.synthetic.main.operation_scroll_content.*
 import java.util.*
 import android.net.Uri
 
-
-
 class OperationsActivity : BottomSheetActivity() {
 
     val operationsAdapter : OperationsAdapter by lazy {  OperationsAdapter(::openCompleteProfilePopUp, ::humaneClick) }
