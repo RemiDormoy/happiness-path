@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_transfer_confirmation.*
 
 class TransferConfirmationActivity : BottomSheetActivity() {
@@ -34,6 +35,11 @@ class TransferConfirmationActivity : BottomSheetActivity() {
         lottieNotification.setOnClickListener {
             openBottomSheetMwahaha(Pattern.GRATIFICATION)
         }
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Confirmation")
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Confirmation")
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Confirmation")
+        FirebaseAnalytics.getInstance(this).logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
     }
 
     override fun onBackPressed() {

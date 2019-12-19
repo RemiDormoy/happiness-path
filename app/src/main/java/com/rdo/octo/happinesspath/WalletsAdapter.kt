@@ -12,12 +12,12 @@ class WalletsAdapter(private val clickListener: () -> Unit, private val lockList
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val list = listOf(
-        Wallet(R.drawable.ic_transfert, "Transferts"),
+        Wallet(R.drawable.ic_transfert, "Virement"),
         Wallet(R.drawable.ic_lock_black_24dp, "Mes comptes"),
         Wallet(R.drawable.ic_lock_black_24dp, "Dashboards"),
-        Wallet(R.drawable.ic_lock_black_24dp, "Travel to London"),
-        Wallet(R.drawable.ic_lock_black_24dp, "Playstation"),
-        Wallet(R.drawable.ic_lock_black_24dp, "Cinema savings")
+        Wallet(R.drawable.ic_lock_black_24dp, "Cartes"),
+        Wallet(R.drawable.ic_lock_black_24dp, "Paramètres"),
+        Wallet(R.drawable.ic_lock_black_24dp, "Messages")
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

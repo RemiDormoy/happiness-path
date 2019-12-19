@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:text="You've reached the end of the list" />
+            android:text="Vous avez atteint la fin de la liste" />
 
         <View
             android:layout_width="0dp"

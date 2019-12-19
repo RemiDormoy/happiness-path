@@ -32,6 +32,8 @@ import android.view.View.*
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.GestureDetectorCompat
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.graphics.Color
+import com.google.firebase.analytics.FirebaseAnalytics
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
 class TransferActivity : BottomSheetActivity() {
@@ -53,6 +55,11 @@ class TransferActivity : BottomSheetActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transfer)
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Virements")
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Virements")
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Virements")
+        FirebaseAnalytics.getInstance(this).logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
 
         cardView2.post {
             cardView2.translationY = cardView2.height.toFloat()
@@ -191,15 +198,17 @@ class TransferActivity : BottomSheetActivity() {
                 contactCardContainer.progress = progress
             }
             val black = ContextCompat.getColor(this, R.color.alizouzBlack)
-            val white = ContextCompat.getColor(this, android.R.color.white)
+            val white = Color.TRANSPARENT
             val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), black, white)
             colorAnimation.duration = 300
             Handler().postDelayed({
                 yoloText.visibility = GONE
                 yoloImage.visibility = GONE
-            }, 300)
+
+            }, 500)
             colorAnimation.addUpdateListener {
                 goToAmountButton.setBackgroundColor(it.animatedValue as Int)
+                addedContacts.setBackgroundColor(it.animatedValue as Int)
             }
             reasonEditText.hint =
                 "Virement à ${addedContactAdapter.list.joinToString(", ") { it.name }}"

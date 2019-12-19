@@ -18,20 +18,20 @@ class OperationsAdapter(
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val list1 = listOf(
-        Operation("+200,00€", "Birthday Tom"),
-        Operation("-40,00€", "NYC"),
-        Operation("-56,75€", "New Car"),
-        Operation("+123,90€", "Travel to London"),
-        Operation("-89,00€", "Playstation"),
-        Operation("+3500,90€", "Salary"),
-        Operation("-30,87€", "Cinema savings"),
-        Operation("+200,00€", "Birthday Tom"),
-        Operation("-40,00€", "NYC"),
-        Operation("-56,75€", "New Car"),
-        Operation("+123,90€", "Travel to London"),
-        Operation("-89,00€", "Playstation"),
-        Operation("+3500,90€", "Salary"),
-        Operation("-30,87€", "Cinema savings")
+        Operation("+200,00€", "Aniversaire Nicolas"),
+        Operation("-40,00€", "Repas au Burger King"),
+        Operation("-56,75€", "Assurance habitation"),
+        Operation("+123,90€", "Remboursement tricount Londres"),
+        Operation("-89,00€", "Fifa Playstation 4"),
+        Operation("+3500,90€", "Salaire"),
+        Operation("-30,87€", "Abonnement cinema"),
+        Operation("+200,00€", "Aniversaire Alizée"),
+        Operation("-40,00€", "Repas au Mac Donalds"),
+        Operation("-56,75€", "Assurance habitation"),
+        Operation("+123,90€", "Prime de vacances"),
+        Operation("-89,00€", "Madden Playstation 4"),
+        Operation("+3500,90€", "Salaire"),
+        Operation("-30,87€", "Abonnement cinema")
     )
 
     private val notifsViews = mutableListOf<View>()

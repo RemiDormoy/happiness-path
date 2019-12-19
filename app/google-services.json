@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "901528390630",
+    "firebase_url": "https://diabete-hack.firebaseio.com",
+    "project_id": "diabete-hack",
+    "storage_bucket": "diabete-hack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901528390630:android:feb129a04e51c2c01a2427",
+        "android_client_info": {
+          "package_name": "com.rdo.octo.diabetesimulationgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901528390630-sd0ku83svn0vjotv4iiopafrf51nmm8r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtPL05oeXXEquecnJZQENa__DLhYyItbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901528390630-sd0ku83svn0vjotv4iiopafrf51nmm8r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901528390630:android:44439288b89e90381a2427",
+        "android_client_info": {
+          "package_name": "com.rdo.octo.happinesspath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901528390630-sd0ku83svn0vjotv4iiopafrf51nmm8r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtPL05oeXXEquecnJZQENa__DLhYyItbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901528390630-sd0ku83svn0vjotv4iiopafrf51nmm8r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

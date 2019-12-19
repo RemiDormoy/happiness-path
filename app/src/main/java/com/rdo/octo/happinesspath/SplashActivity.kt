@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.android.synthetic.main.fragment_splash_tuto.*
 
@@ -52,6 +53,11 @@ class SplashActivity : AppCompatActivity() {
                         }.start()
                 }.start()
         }, 1000)
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Splash")
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Splash")
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Splash")
+        FirebaseAnalytics.getInstance(this).logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
     }
 
 }

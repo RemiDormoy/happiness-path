@@ -12,15 +12,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/dmsansbold"
+        android:text="@string/app_name"
         android:textColor="@android:color/white"
         android:textSize="40dp"
-        android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/closeButton" />
 
     <ImageView
         android:padding="16dp"

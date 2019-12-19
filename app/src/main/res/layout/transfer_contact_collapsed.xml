@@ -59,6 +59,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/border_button_background_selected"
         app:layout_constraintBottom_toBottomOf="@id/textView"
         app:layout_constraintEnd_toEndOf="@+id/selectedContactContainer1"

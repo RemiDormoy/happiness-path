@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.operation_header.*
 import kotlinx.android.synthetic.main.operation_scroll_content.*
 import java.util.*
 import android.net.Uri
+import com.google.firebase.analytics.FirebaseAnalytics
 
 class OperationsActivity : BottomSheetActivity() {
 
@@ -53,6 +54,12 @@ class OperationsActivity : BottomSheetActivity() {
             }
         }
 
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Operations")
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Operations")
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Operations")
+        FirebaseAnalytics.getInstance(this).logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+
         discoverOctoButton.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.octo.com"))
             startActivity(browserIntent)
@@ -76,6 +83,11 @@ class OperationsActivity : BottomSheetActivity() {
         initButtons()
 
         imageView.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "OpenDrawer")
+            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "OpenDrawer")
+            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "OpenDrawer")
+            FirebaseAnalytics.getInstance(this).logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
             drawerRoot.openDrawer(GravityCompat.START)
         }
 

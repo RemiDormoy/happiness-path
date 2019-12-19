@@ -2,6 +2,7 @@ package com.rdo.octo.happinesspath
 
 import android.content.Intent
 import android.os.Build
+import android.os.Bundle
 import android.os.Handler
 import android.text.Layout
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.bottom_sheet_content.*
 import kotlinx.android.synthetic.main.cell_drawer.view.*
@@ -71,6 +73,11 @@ abstract class BottomSheetActivity : AppCompatActivity() {
 
     protected fun openBottomSheetMwahaha(pattern: Pattern) {
         hideKeyboard()
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Open Bottom sheet")
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Open Bottom sheet")
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, pattern.getPatternLabel())
+        FirebaseAnalytics.getInstance(this).logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
         Handler().postDelayed({
             patternImageView.setImageResource(pattern.image)
             patternContentTextView.setText(pattern.text)
