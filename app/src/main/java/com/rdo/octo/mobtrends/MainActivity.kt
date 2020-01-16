@@ -1,4 +1,4 @@
-package com.rdo.octo.happinesspath
+package com.rdo.octo.mobtrends
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

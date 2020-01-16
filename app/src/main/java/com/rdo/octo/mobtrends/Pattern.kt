@@ -1,4 +1,4 @@
-package com.rdo.octo.happinesspath
+package com.rdo.octo.mobtrends
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

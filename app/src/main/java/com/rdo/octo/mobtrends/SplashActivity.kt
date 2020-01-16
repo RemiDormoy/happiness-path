@@ -1,4 +1,4 @@
-package com.rdo.octo.happinesspath
+package com.rdo.octo.mobtrends
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.android.synthetic.main.fragment_splash_tuto.*
@@ -30,6 +30,9 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        Glide.with(this)
+            .load(R.drawable.logo_octo_splash)
+            .into(logoOctoImageView)
         Handler().postDelayed({
             splashLogoImageView.animate().setDuration(300).scaleY(1.25f).scaleX(1.25f)
                 .withEndAction {

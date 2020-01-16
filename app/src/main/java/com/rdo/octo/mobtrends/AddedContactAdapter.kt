@@ -1,11 +1,8 @@
-package com.rdo.octo.happinesspath
+package com.rdo.octo.mobtrends
 
 import android.view.LayoutInflater
-import android.view.View.VISIBLE
 import android.view.ViewGroup
-import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.cell_contact.view.*
 import kotlinx.android.synthetic.main.cell_contact_added.view.*
 
 class AddedContactAdapter(

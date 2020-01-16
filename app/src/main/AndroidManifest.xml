@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.rdo.octo.happinesspath">
+    package="com.rdo.octo.mobtrends">
 
     <uses-feature
         android:name="android.hardware.fingerprint"
@@ -18,20 +18,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.rdo.octo.mobtrends.MainActivity">
         </activity>
-        <activity android:name=".OperationsActivity">
+        <activity android:name="com.rdo.octo.mobtrends.OperationsActivity">
         </activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.rdo.octo.mobtrends.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SimpleAuthActivity" />
-        <activity android:name=".TransferActivity" />
-        <activity android:name=".TransferConfirmationActivity" />
+        <activity android:name="com.rdo.octo.mobtrends.SimpleAuthActivity" />
+        <activity android:name="com.rdo.octo.mobtrends.TransferActivity" />
+        <activity android:name="com.rdo.octo.mobtrends.TransferConfirmationActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

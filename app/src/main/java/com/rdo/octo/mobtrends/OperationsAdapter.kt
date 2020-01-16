@@ -1,4 +1,4 @@
-package com.rdo.octo.happinesspath
+package com.rdo.octo.mobtrends
 
 import android.view.LayoutInflater
 import android.view.View
